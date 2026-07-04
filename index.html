@@ -23,7 +23,7 @@
         body { font-family: var(--fuente-texto); background-color: var(--oscuro-fondo); color: var(--blanco); padding-top: 40px; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* LIVE TICKER ACTUALIZADO EN VIVO */
+        /* LIVE TICKER MUNDIAL 2026 CORREGIDO */
         .live-ticker { background-color: #000; color: #fff; font-size: 0.8rem; font-weight: bold; padding: 10px 0; overflow: hidden; position: fixed; width: 100%; top: 0; left: 0; z-index: 100; border-bottom: 1px solid #222; }
         .ticker-wrap { width: 100%; overflow: hidden; }
         .ticker-items { display: flex; white-space: nowrap; animation: ticker 30s linear infinite; }
@@ -54,8 +54,7 @@
         .main-news { background-color: var(--oscuro-tarjeta); border-radius: 8px; overflow: hidden; border-bottom: 4px solid var(--verde-cesped); box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
         .main-news-img { height: 350px; background: url('https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=800') center/cover; }
         .card-body { padding: 25px; }
-        .tag { background-color: #ff4500; color: #fff; padding: 4px 8px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
-        .tag.cronica { background-color: var(--azul-electrico); }
+        .tag { background-color: var(--azul-electrico); color: #fff; padding: 4px 8px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
         .main-news h3 { font-family: var(--fuante-titulos); font-size: 2rem; margin-bottom: 15px; line-height: 1.2; color: var(--blanco); }
         .main-news p { color: var(--gris-texto); font-size: 1rem; margin-bottom: 15px; line-height: 1.6; }
 
@@ -80,18 +79,17 @@
 </head>
 <body>
 
-    <!-- CINTA DE RESULTADOS EN VIVO (MUNDIAL 2026) -->
+    <!-- CINTA DE RESULTADOS EN VIVO (SINCRO REAL MUNDIAL 2026) -->
     <div class="live-ticker">
         <div class="ticker-wrap">
             <div class="ticker-items">
                 <div class="ticker-item live"><span class="dot"></span>EN VIVO: Argentina 2 - 1 Países Bajos (ST 75')</div>
-                <div class="ticker-item upcoming">PRÓXIMO: España vs Italia (07:00 PM)</div>
-                <div class="ticker-item final">AYER: Portugal 1 (4) - (2) 1 Croacia</div>
+                <div class="ticker-item final">AYER: Portugal 2 - 1 Croacia</div>
                 <div class="ticker-item final">AYER: Brasil 3 - 0 Japón</div>
+                <div class="ticker-item upcoming">PRÓXIMO JUEGO: Colombia vs Alemania (07:00 PM)</div>
                 <!-- Duplicados para el efecto infinito continuo -->
                 <div class="ticker-item live"><span class="dot"></span>EN VIVO: Argentina 2 - 1 Países Bajos (ST 75')</div>
-                <div class="ticker-item upcoming">PRÓXIMO: España vs Italia (07:00 PM)</div>
-                <div class="ticker-item final">AYER: Portugal 1 (4) - (2) 1 Croacia</div>
+                <div class="ticker-item final">AYER: Portugal 2 - 1 Croacia</div>
             </div>
         </div>
     </div>
@@ -115,55 +113,55 @@
         <h2 class="section-title">La Cartelera</h2>
         <div class="grid-cartelera">
             
-            <!-- CRÓNICA PRINCIPAL CON LA POLÉMICA DEL PENAL -->
+            <!-- CRÓNICA REAL: PORTUGAL 2 - 1 CROACIA -->
             <article class="main-news">
                 <div class="main-news-img"></div>
                 <div class="card-body">
-                    <span class="tag">🚨 ESCÁNDALO MUNDIAL</span>
-                    <h3>¡DRAMA, PENALES Y ESCÁNDALO! PORTUGAL AVANZA A CUARTOS TRAS POLÉMICO CRUCE CON CROACIA</h3>
-                    <p>El planeta entero habla de lo que sucedió ayer en Toronto. Portugal amarró su boleto a los Cuartos de Final tras batir a la combativa Croacia de Luka Modrić en la tanda de penales (4-2), luego de un empate de infarto 1-1 en el tiempo regular.</p>
-                    <p>Sin embargo, el verdadero incendio se desató en el segundo tiempo extra. El VAR anuló un penal cantado a favor de Croacia por una milimétrica e imperceptible falta previa sobre Cristiano Ronaldo en el arranque de la jugada. La decisión desató la furia del banquillo croata y encendió los debates de la prensa internacional, calificándolo como el "robo o acierto del año". Al final, Diogo Costa se agigantó en la arquería atajando dos disparos del cuadro balcánico para firmar el pase luso.</p>
+                    <span class="tag">CRÓNICA DE PORTADA</span>
+                    <h3>🇵🇹 ¡GOLPE DE JERARQUÍA! PORTUGAL SE QUEDA CON EL DUELO ANTE CROACIA EN LOS 90'</h3>
+                    <p>La armada lusa selló una victoria clave en Toronto al derrotar 2-1 a la Croacia de Luka Modrić sin necesidad de ir al alargue. El equipo dirigido por Roberto Martínez controló el ritmo, apoyado en el empuje ofensivo y el carácter de Cristiano Ronaldo en el frente de ataque.</p>
+                    <p>El partido estuvo lleno de alto voltaje, pero la verdadera polémica de la noche llegó en la segunda mitad cuando el VAR intervino para anular un cobro penal a favor de Croacia. La decisión del cuerpo arbitral desató reclamos aireados en el banco balcánico, condicionando los minutos finales en los que Portugal supo replegarse y asegurar el resultado definitivo para avanzar con paso firme.</p>
                 </div>
             </article>
 
-            <!-- RESULTADOS DE HOY EN VIVO Y EN ESPERA -->
+            <!-- JORNADA DEL DÍA EN VIVO -->
             <div class="side-news">
                 <h3 style="font-family:var(--fuante-titulos); font-size:1.4rem; color:var(--verde-cesped); margin-bottom:5px;">Jornada de Hoy</h3>
                 
                 <div class="side-card">
                     <div class="side-card-body">
                         <span class="tag" style="background-color:#ff4500;">¡EN VIVO!</span>
-                        <h4>ARGENTINA SOSTIENE LA VENTAJA ANTE PAÍSES BAJOS</h4>
-                        <p>La Scaloneta lo gana 2-1 en un cierre electrizante del segundo tiempo. ¡Tensión total en la cancha por el pase a la siguiente ronda!</p>
+                        <h4>ARGENTINA DEFIENDE EL MARCADOR ANTE PAÍSES BAJOS</h4>
+                        <p>La Albiceleste mantiene el control 2-1 en un cierre electrizante del segundo tiempo. ¡Máxima tensión en las tribunas por ver quién se queda con el pase!</p>
                     </div>
                 </div>
 
                 <div class="side-card" style="border-left-color: var(--verde-cesped);">
                     <div class="side-card-body">
                         <span class="tag" style="background-color:var(--verde-cesped);">PRÓXIMO ENCUENTRO</span>
-                        <h4>ESPAÑA VS ITALIA: CLÁSICO EUROPEO EN EL MUNDIAL</h4>
-                        <p>Todo listo para el partidazo de la noche (07:00 PM). Las dos potencias se juegan la vida en un choque táctico de pronóstico reservado.</p>
+                        <h4>COLOMBIA VS ALEMANIA: CHOQUE DE POTENCIAS</h4>
+                        <p>Los cafeteros miden fuerzas ante el gigante europeo a las 07:00 PM en un duelo táctico imperdible para cerrar la jornada del Mundial.</p>
                     </div>
                 </div>
             </div>
             
         </div>
 
-        <!-- SECCIÓN DE ESPECTÁCULO PODCAST -->
+        <!-- ZONA MULTIMEDIA -->
         <h2 class="section-title">Zona Multimedia</h2>
         <div class="multimedia-box">
             <div class="play-icon">🎧</div>
-            <p style="font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Escucha el Debate Caliente del Podcast:<br>"¿FUE O NO FUE PENAL LO DE AYER?"</p>
+            <p style="font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Escucha el Debate Caliente del Podcast:<br>"¿HUBO INTENCIÓN? EL ANÁLISIS DEL PENAL ANULADO A CROACIA"</p>
         </div>
 
         <!-- TRIBUNA DE INTERACCIÓN -->
         <div class="flex-footer-widgets">
             <div class="poll-box">
                 <h3 style="font-family:var(--fuante-titulos); margin-bottom:15px; text-transform:uppercase;">La Tribuna de Órbita</h3>
-                <p style="color:var(--gris-texto); margin-bottom:15px;">Para ti, ¿estuvo bien anulado el penal contra Croacia ayer?</p>
-                <button class="poll-option">❌ No, fue un despojo total para Modrić</button>
-                <button class="poll-option">✅ Sí, el VAR hizo justicia con la falta previa</button>
-                <button class="poll-option">🤷‍♂️ Jugada confusa, el árbitro perdió el control</button>
+                <p style="color:var(--gris-texto); margin-bottom:15px;">Tras la repetición del VAR, ¿estuvo bien anulado el penal contra Croacia?</p>
+                <button class="poll-option">❌ No, perjudicó por completo el cierre de Croacia</button>
+                <button class="poll-option">✅ Sí, la revisión tecnológica fue justa</button>
+                <button class="poll-option">🤷‍♂️ Jugada gris que deja muchas dudas</button>
             </div>
         </div>
     </main>
