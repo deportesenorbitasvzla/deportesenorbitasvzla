@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deportes en Órbita Vzla | Donde la pasión se convierte en Show</title>
+    <title>Deportes en Órbita Vzla | El Show de la Cancha</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -23,12 +23,13 @@
         body { font-family: var(--fuente-texto); background-color: var(--oscuro-fondo); color: var(--blanco); padding-top: 40px; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-        /* LIVE TICKER */
+        /* LIVE TICKER ACTUALIZADO EN VIVO */
         .live-ticker { background-color: #000; color: #fff; font-size: 0.8rem; font-weight: bold; padding: 10px 0; overflow: hidden; position: fixed; width: 100%; top: 0; left: 0; z-index: 100; border-bottom: 1px solid #222; }
         .ticker-wrap { width: 100%; overflow: hidden; }
         .ticker-items { display: flex; white-space: nowrap; animation: ticker 30s linear infinite; }
         .ticker-item { padding: 0 20px; display: inline-flex; align-items: center; text-transform: uppercase; }
-        .ticker-item.live { color: #28a745; }
+        .ticker-item.live { color: #ff4500; }
+        .ticker-item.live .dot { height: 8px; width: 8px; background-color: #ff4500; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1s infinite; }
         .ticker-item.final { color: #888; }
         .ticker-item.upcoming { color: var(--azul-electrico); }
 
@@ -40,52 +41,57 @@
         .nav-links a.active { border-bottom: 2px solid var(--verde-cesped); padding-bottom: 5px; }
 
         /* HERO */
-        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1510563800743-aed2364902b8?q=80&w=1200') no-repeat center center/cover; padding: 100px 20px; text-align: center; }
-        .hero h1 { font-family: var(--fuante-titulos); font-size: 4rem; line-height: 1; margin-bottom: 20px; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200') no-repeat center center/cover; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-family: var(--fuante-titulos); font-size: 3.5rem; line-height: 1; margin-bottom: 15px; }
         .hero h1 span { color: var(--verde-cesped); }
-        .hero p { color: var(--gris-texto); font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px; text-transform: uppercase; letter-spacing: 1px; }
-        .btn { display: inline-block; background-color: #8B4513; color: var(--blanco); padding: 12px 30px; text-decoration: none; font-weight: bold; text-transform: uppercase; border-radius: 4px; font-size: 0.9rem; }
+        .hero p { color: var(--gris-texto); font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* CARTELERA */
+        /* CARTELERA Y RECUADROS */
         .section-title { font-family: var(--fuante-titulos); font-size: 2.2rem; margin: 40px 0 20px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
         .section-title::before { content: ''; display: inline-block; width: 6px; height: 30px; background-color: var(--verde-cesped); }
         
-        .grid-cartelera { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
-        .main-news { background-color: var(--oscuro-tarjeta); border-radius: 8px; overflow: hidden; border-bottom: 4px solid var(--verde-cesped); }
-        .main-news-img { height: 300px; background: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800') center/cover; }
+        .grid-cartelera { display: grid; grid-template-columns: 1.6fr 1fr; gap: 25px; }
+        .main-news { background-color: var(--oscuro-tarjeta); border-radius: 8px; overflow: hidden; border-bottom: 4px solid var(--verde-cesped); box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .main-news-img { height: 350px; background: url('https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=800') center/cover; }
         .card-body { padding: 25px; }
-        .tag { background-color: var(--azul-electrico); color: #fff; padding: 4px 8px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
-        .main-news h3 { font-family: var(--fuante-titulos); font-size: 1.8rem; margin-bottom: 15px; line-height: 1.2; }
-        .main-news p { color: var(--gris-texto); font-size: 0.95rem; }
+        .tag { background-color: #ff4500; color: #fff; padding: 4px 8px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
+        .tag.cronica { background-color: var(--azul-electrico); }
+        .main-news h3 { font-family: var(--fuante-titulos); font-size: 2rem; margin-bottom: 15px; line-height: 1.2; color: var(--blanco); }
+        .main-news p { color: var(--gris-texto); font-size: 1rem; margin-bottom: 15px; line-height: 1.6; }
 
         .side-news { display: flex; flex-direction: column; gap: 20px; }
-        .side-card { background-color: var(--oscuro-tarjeta); display: flex; border-radius: 8px; overflow: hidden; height: 135px; }
-        .side-card-img { width: 35%; background-size: cover; background-position: center; }
-        .side-card-body { padding: 15px; width: 65%; }
-        .side-card h4 { font-family: var(--fuante-titulos); font-size: 1.1rem; margin-top: 5px; }
+        .side-card { background-color: var(--oscuro-tarjeta); display: flex; border-radius: 8px; overflow: hidden; min-height: 140px; border-left: 3px solid var(--azul-electrico); }
+        .side-card-body { padding: 20px; width: 100%; }
+        .side-card h4 { font-family: var(--fuante-titulos); font-size: 1.2rem; margin-top: 5px; color: var(--blanco); letter-spacing: 0.5px; }
+        .side-card p { color: var(--gris-texto); font-size: 0.9rem; margin-top: 8px; }
 
-        /* MULTIMEDIA & TRIBUNA */
+        /* MULTIMEDIA Y INTERACCIÓN */
         .multimedia-box { background-color: #111; border: 1px solid #222; padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 40px; }
         .play-icon { font-size: 3rem; color: var(--azul-electrico); margin-bottom: 15px; cursor: pointer; }
         
         .flex-footer-widgets { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
         .poll-box { background-color: var(--oscuro-tarjeta); padding: 25px; border-radius: 8px; border: 1px solid #222; }
-        .poll-option { display: block; width: 100%; padding: 12px; margin-bottom: 10px; background: #222; border: 1px solid #333; color: #fff; text-align: left; border-radius: 4px; font-size: 0.9rem; }
+        .poll-option { display: block; width: 100%; padding: 12px; margin-bottom: 10px; background: #222; border: 1px solid #333; color: #fff; text-align: left; border-radius: 4px; font-size: 0.9rem; font-weight: bold; }
 
         @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
-        @media (max-width: 768px) { .grid-cartelera, .flex-footer-widgets { grid-template-columns: 1fr; } .nav-links { display: none; } .hero h1 { font-size: 2.5rem; } }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+        @media (max-width: 768px) { .grid-cartelera, .flex-footer-widgets { grid-template-columns: 1fr; } .nav-links { display: none; } .hero h1 { font-size: 2.3rem; } }
     </style>
 </head>
 <body>
 
+    <!-- CINTA DE RESULTADOS EN VIVO (MUNDIAL 2026) -->
     <div class="live-ticker">
         <div class="ticker-wrap">
             <div class="ticker-items">
-                <div class="ticker-item final">FINAL: Portugal 1 (4) - (2) 1 Croacia</div>
-                <div class="ticker-item live"><span style="color:#28a745;margin-right:5px;">•</span> EN VIVO: España 0 - 0 Italia</div>
-                <div class="ticker-item final">FINAL: Argentina 2 - 1 Países Bajos</div>
-                <div class="ticker-item final">FINAL: Portugal 1 (4) - (2) 1 Croacia</div>
-                <div class="ticker-item live"><span style="color:#28a745;margin-right:5px;">•</span> EN VIVO: España 0 - 0 Italia</div>
+                <div class="ticker-item live"><span class="dot"></span>EN VIVO: Argentina 2 - 1 Países Bajos (ST 75')</div>
+                <div class="ticker-item upcoming">PRÓXIMO: España vs Italia (07:00 PM)</div>
+                <div class="ticker-item final">AYER: Portugal 1 (4) - (2) 1 Croacia</div>
+                <div class="ticker-item final">AYER: Brasil 3 - 0 Japón</div>
+                <!-- Duplicados para el efecto infinito continuo -->
+                <div class="ticker-item live"><span class="dot"></span>EN VIVO: Argentina 2 - 1 Países Bajos (ST 75')</div>
+                <div class="ticker-item upcoming">PRÓXIMO: España vs Italia (07:00 PM)</div>
+                <div class="ticker-item final">AYER: Portugal 1 (4) - (2) 1 Croacia</div>
             </div>
         </div>
     </div>
@@ -101,56 +107,66 @@
     </header>
 
     <section class="hero">
-        <h1>DONDE LA PASIÓN SE CONVIERTE EN <span>SHOW</span></h1>
-        <p>Crónicas Épicas, Lifestyle, El Horóscopo de la Cancha y El Color Fuera de la Cancha</p>
-        <a href="#" class="btn">¡Entra al Tercer Tiempo!</a>
+        <h1>EL SHOW DEL MUNDIAL EN <span>ÓRBITA</span></h1>
+        <p>Minuto a minuto, polémicas encendidas y el color de las mejores hinchadas del planeta</p>
     </section>
 
     <main class="container">
         <h2 class="section-title">La Cartelera</h2>
         <div class="grid-cartelera">
+            
+            <!-- CRÓNICA PRINCIPAL CON LA POLÉMICA DEL PENAL -->
             <article class="main-news">
                 <div class="main-news-img"></div>
                 <div class="card-body">
-                    <span class="tag">Crónica</span>
-                    <h3>🇵🇹 ¡HÉROES EN LOS PENALES! PORTUGAL ELIMINA A CROACIA EN EL 'ÚLTIMO BAILE' DE CRISTIANO Y MODRIĆ</h3>
-                    <p>En un cierre cinematográfico en Toronto, la armada lusa avanza a Cuartos de Final tras imponerse en una cardíaca tanda de penales (4-2). Diogo Costa fue el héroe tapando dos ejecuciones y el 'Bicho' no falló desde los doce pasos.</p>
+                    <span class="tag">🚨 ESCÁNDALO MUNDIAL</span>
+                    <h3>¡DRAMA, PENALES Y ESCÁNDALO! PORTUGAL AVANZA A CUARTOS TRAS POLÉMICO CRUCE CON CROACIA</h3>
+                    <p>El planeta entero habla de lo que sucedió ayer en Toronto. Portugal amarró su boleto a los Cuartos de Final tras batir a la combativa Croacia de Luka Modrić en la tanda de penales (4-2), luego de un empate de infarto 1-1 en el tiempo regular.</p>
+                    <p>Sin embargo, el verdadero incendio se desató en el segundo tiempo extra. El VAR anuló un penal cantado a favor de Croacia por una milimétrica e imperceptible falta previa sobre Cristiano Ronaldo en el arranque de la jugada. La decisión desató la furia del banquillo croata y encendió los debates de la prensa internacional, calificándolo como el "robo o acierto del año". Al final, Diogo Costa se agigantó en la arquería atajando dos disparos del cuadro balcánico para firmar el pase luso.</p>
                 </div>
             </article>
 
+            <!-- RESULTADOS DE HOY EN VIVO Y EN ESPERA -->
             <div class="side-news">
+                <h3 style="font-family:var(--fuante-titulos); font-size:1.4rem; color:var(--verde-cesped); margin-bottom:5px;">Jornada de Hoy</h3>
+                
                 <div class="side-card">
-                    <div class="side-card-img" style="background-image:url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=400')"></div>
                     <div class="side-card-body">
-                        <span class="tag" style="background-color:var(--azul-electrico)">Tendencias</span>
-                        <h4>ICONOS DEL DEPORTE: EL OUTFIT DEL AÑO</h4>
+                        <span class="tag" style="background-color:#ff4500;">¡EN VIVO!</span>
+                        <h4>ARGENTINA SOSTIENE LA VENTAJA ANTE PAÍSES BAJOS</h4>
+                        <p>La Scaloneta lo gana 2-1 en un cierre electrizante del segundo tiempo. ¡Tensión total en la cancha por el pase a la siguiente ronda!</p>
                     </div>
                 </div>
-                <div class="side-card">
-                    <div class="side-card-img" style="background-image:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400')"></div>
+
+                <div class="side-card" style="border-left-color: var(--verde-cesped);">
                     <div class="side-card-body">
-                        <span class="tag" style="background-color:var(--azul-electrico)">Música</span>
-                        <h4>LOS RITMOS URBANOS SE TOMAN LAS TRIBUNAS</h4>
+                        <span class="tag" style="background-color:var(--verde-cesped);">PRÓXIMO ENCUENTRO</span>
+                        <h4>ESPAÑA VS ITALIA: CLÁSICO EUROPEO EN EL MUNDIAL</h4>
+                        <p>Todo listo para el partidazo de la noche (07:00 PM). Las dos potencias se juegan la vida en un choque táctico de pronóstico reservado.</p>
                     </div>
                 </div>
             </div>
+            
         </div>
 
+        <!-- SECCIÓN DE ESPECTÁCULO PODCAST -->
         <h2 class="section-title">Zona Multimedia</h2>
         <div class="multimedia-box">
-            <div class="play-icon">▶</div>
-            <p style="font-weight:bold; text-transform:uppercase;">Reproducir último episodio del Podcast:<br>"EL SHOW DEL JUEGO"</p>
+            <div class="play-icon">🎧</div>
+            <p style="font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Escucha el Debate Caliente del Podcast:<br>"¿FUE O NO FUE PENAL LO DE AYER?"</p>
         </div>
 
+        <!-- TRIBUNA DE INTERACCIÓN -->
         <div class="flex-footer-widgets">
             <div class="poll-box">
-                <h3 style="font-family:var(--fuante-titulos); margin-bottom:15px; text-transform:uppercase;">Encuesta del Día</h3>
-                <p style="color:var(--gris-texto); margin-bottom:15px;">¿Quién dio el mejor espectáculo este fin de semana?</p>
-                <button class="poll-option">⚪ Opción 1</button>
-                <button class="poll-option">⚪ Opción 2</button>
-                <button class="poll-option">⚪ Opción 3</button>
+                <h3 style="font-family:var(--fuante-titulos); margin-bottom:15px; text-transform:uppercase;">La Tribuna de Órbita</h3>
+                <p style="color:var(--gris-texto); margin-bottom:15px;">Para ti, ¿estuvo bien anulado el penal contra Croacia ayer?</p>
+                <button class="poll-option">❌ No, fue un despojo total para Modrić</button>
+                <button class="poll-option">✅ Sí, el VAR hizo justicia con la falta previa</button>
+                <button class="poll-option">🤷‍♂️ Jugada confusa, el árbitro perdió el control</button>
             </div>
         </div>
     </main>
+
 </body>
 </html>
