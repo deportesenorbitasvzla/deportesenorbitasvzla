@@ -4,167 +4,849 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deportes en Órbita Vzla | El Show de la Cancha</title>
+    
+    <!-- Fuentes premium de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* PALETA DE COLORES E IDENTIDAD VISUAL */
         :root {
             --verde-cesped: #28a745;
             --azul-electrico: #007bff;
-            --oscuro-fondo: #0a0a0a;
-            --oscuro-tarjeta: #161616;
+            --oscuro-fondo: #0d0e12;
+            --oscuro-tarjeta: #161920;
+            --oscuro-tarjeta-hover: #1e222d;
             --blanco: #ffffff;
-            --gris-texto: #b3b3b3;
+            --gris-texto: #a0aec0;
+            --marron-cuero: #8B4513;
+            --rojo-vivo: #e53e3e;
             --fuante-titulos: 'Anton', sans-serif;
-            --fuente-texto: 'Roboto', sans-serif;
+            --fuente-texto: 'Space Grotesk', sans-serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--fuente-texto); background-color: var(--oscuro-fondo); color: var(--blanco); padding-top: 40px; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        /* CONFIGURACIÓN GENERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-        /* LIVE TICKER MUNDIAL 2026 CORREGIDO */
-        .live-ticker { background-color: #000; color: #fff; font-size: 0.8rem; font-weight: bold; padding: 10px 0; overflow: hidden; position: fixed; width: 100%; top: 0; left: 0; z-index: 100; border-bottom: 1px solid #222; }
-        .ticker-wrap { width: 100%; overflow: hidden; }
-        .ticker-items { display: flex; white-space: nowrap; animation: ticker 30s linear infinite; }
-        .ticker-item { padding: 0 20px; display: inline-flex; align-items: center; text-transform: uppercase; }
-        .ticker-item.live { color: #ff4500; }
-        .ticker-item.live .dot { height: 8px; width: 8px; background-color: #ff4500; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 1s infinite; }
-        .ticker-item.final { color: #888; }
-        .ticker-item.upcoming { color: var(--azul-electrico); }
+        body {
+            font-family: var(--fuente-texto);
+            background-color: var(--oscuro-fondo);
+            color: var(--blanco);
+            padding-top: 45px;
+            overflow-x: hidden;
+        }
 
-        /* NAVBAR */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: #000; border-bottom: 1px solid #111; }
-        .logo { font-family: var(--fuante-titulos); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
-        .logo span { color: var(--verde-cesped); }
-        .nav-links a { color: var(--blanco); text-decoration: none; margin-left: 20px; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
-        .nav-links a.active { border-bottom: 2px solid var(--verde-cesped); padding-bottom: 5px; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-        /* HERO */
-        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200') no-repeat center center/cover; padding: 80px 20px; text-align: center; }
-        .hero h1 { font-family: var(--fuante-titulos); font-size: 3.5rem; line-height: 1; margin-bottom: 15px; }
-        .hero h1 span { color: var(--verde-cesped); }
-        .hero p { color: var(--gris-texto); font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; text-transform: uppercase; letter-spacing: 1px; }
+        /* CINTA DE RESULTADOS EN VIVO */
+        .live-ticker {
+            background-color: #000;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 12px 0;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--verde-cesped);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
 
-        /* CARTELERA Y RECUADROS */
-        .section-title { font-family: var(--fuante-titulos); font-size: 2.2rem; margin: 40px 0 20px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
-        .section-title::before { content: ''; display: inline-block; width: 6px; height: 30px; background-color: var(--verde-cesped); }
-        
-        .grid-cartelera { display: grid; grid-template-columns: 1.6fr 1fr; gap: 25px; }
-        .main-news { background-color: var(--oscuro-tarjeta); border-radius: 8px; overflow: hidden; border-bottom: 4px solid var(--verde-cesped); box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .main-news-img { height: 350px; background: url('https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=800') center/cover; }
-        .card-body { padding: 25px; }
-        .tag { background-color: var(--azul-electrico); color: #fff; padding: 4px 8px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
-        .main-news h3 { font-family: var(--fuante-titulos); font-size: 2rem; margin-bottom: 15px; line-height: 1.2; color: var(--blanco); }
-        .main-news p { color: var(--gris-texto); font-size: 1rem; margin-bottom: 15px; line-height: 1.6; }
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+        }
 
-        .side-news { display: flex; flex-direction: column; gap: 20px; }
-        .side-card { background-color: var(--oscuro-tarjeta); display: flex; border-radius: 8px; overflow: hidden; min-height: 140px; border-left: 3px solid var(--azul-electrico); }
-        .side-card-body { padding: 20px; width: 100%; }
-        .side-card h4 { font-family: var(--fuante-titulos); font-size: 1.2rem; margin-top: 5px; color: var(--blanco); letter-spacing: 0.5px; }
-        .side-card p { color: var(--gris-texto); font-size: 0.9rem; margin-top: 8px; }
+        .ticker-items {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 35s linear infinite;
+        }
 
-        /* MULTIMEDIA Y INTERACCIÓN */
-        .multimedia-box { background-color: #111; border: 1px solid #222; padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 40px; }
-        .play-icon { font-size: 3rem; color: var(--azul-electrico); margin-bottom: 15px; cursor: pointer; }
-        
-        .flex-footer-widgets { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
-        .poll-box { background-color: var(--oscuro-tarjeta); padding: 25px; border-radius: 8px; border: 1px solid #222; }
-        .poll-option { display: block; width: 100%; padding: 12px; margin-bottom: 10px; background: #222; border: 1px solid #333; color: #fff; text-align: left; border-radius: 4px; font-size: 0.9rem; font-weight: bold; }
+        .ticker-items:hover {
+            animation-play-state: paused;
+            cursor: pointer;
+        }
 
-        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
-        @media (max-width: 768px) { .grid-cartelera, .flex-footer-widgets { grid-template-columns: 1fr; } .nav-links { display: none; } .hero h1 { font-size: 2.3rem; } }
+        .ticker-item {
+            padding: 0 30px;
+            display: inline-flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ticker-item.live {
+            color: var(--rojo-vivo);
+        }
+
+        .ticker-item.live .dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--rojo-vivo);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            animation: pulse 1s infinite;
+        }
+
+        .ticker-item.final {
+            color: var(--gris-texto);
+        }
+
+        .ticker-item.upcoming {
+            color: var(--azul-electrico);
+        }
+
+        /* MENÚ DE NAVEGACIÓN */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid #1e222d;
+            position: sticky;
+            top: 45px;
+            z-index: 90;
+        }
+
+        .logo {
+            font-family: var(--fuante-titulos);
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            color: var(--blanco);
+        }
+
+        .logo span {
+            color: var(--verde-cesped);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s, border-color 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--verde-cesped);
+            border-color: var(--verde-cesped);
+        }
+
+        /* SECCIÓN HERO (PORTADA PRINCIPAL) */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(13, 14, 18, 0.5), rgba(13, 14, 18, 0.95)), 
+                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 1px solid #1e222d;
+        }
+
+        .hero h1 {
+            font-family: var(--fuante-titulos);
+            font-size: 4.5rem;
+            line-height: 0.95;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .hero h1 span {
+            color: var(--verde-cesped);
+        }
+
+        .hero p {
+            color: var(--gris-texto);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .btn-orbit {
+            display: inline-block;
+            background-color: var(--verde-cesped);
+            color: var(--blanco);
+            padding: 14px 35px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-orbit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+            background-color: #218838;
+        }
+
+        /* SECCIONES: TÍTULOS */
+        .section-title {
+            font-family: var(--fuante-titulos);
+            font-size: 2.5rem;
+            margin: 50px 0 25px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: 1px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 35px;
+            background-color: var(--verde-cesped);
+            border-radius: 4px;
+        }
+
+        /* GRID DE LA CARTELERA */
+        .grid-cartelera {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 30px;
+        }
+
+        /* NOTICIA PRINCIPAL */
+        .main-news {
+            background-color: var(--oscuro-tarjeta);
+            border-radius: 12px;
+            overflow: hidden;
+            border-bottom: 5px solid var(--verde-cesped);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .main-news:hover {
+            transform: translateY(-5px);
+        }
+
+        .main-news-img {
+            height: 380px;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1489945052260-4f21c52268b9?q=80&w=800') center/cover;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .tag {
+            background-color: var(--azul-electrico);
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-news h3 {
+            font-family: var(--fuante-titulos);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            color: var(--blanco);
+        }
+
+        .main-news p {
+            color: var(--gris-texto);
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* NOTICIAS SECUNDARIAS */
+        .side-news {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .side-card {
+            background-color: var(--oscuro-tarjeta);
+            border-radius: 12px;
+            overflow: hidden;
+            border-left: 5px solid var(--azul-electrico);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .side-card:hover {
+            transform: translateX(5px);
+            background-color: var(--oscuro-tarjeta-hover);
+        }
+
+        .side-card-body {
+            padding: 20px;
+        }
+
+        .side-card h4 {
+            font-family: var(--fuante-titulos);
+            font-size: 1.4rem;
+            margin-top: 5px;
+            color: var(--blanco);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .side-card p {
+            color: var(--gris-texto);
+            font-size: 0.95rem;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* BRACKET DEL MUNDIAL */
+        .bracket-container {
+            background-color: var(--oscuro-tarjeta);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #1e222d;
+            margin-top: 30px;
+        }
+
+        .bracket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .matchup {
+            background: #101216;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #1e222d;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .matchup-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--verde-cesped);
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        /* SECCIÓN DE GRANDES LIGAS (MLB) */
+        .mlb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .mlb-card {
+            background: linear-gradient(135deg, var(--oscuro-tarjeta) 0%, #1a1e29 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border-bottom: 4px solid var(--marron-cuero);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .mlb-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .mlb-team {
+            font-family: var(--fuante-titulos);
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* ZONA MULTIMEDIA */
+        .multimedia-box {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.95)), 
+                        url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800') center/cover;
+            border: 2px solid #1e222d;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        .play-icon-wrap {
+            height: 80px;
+            width: 80px;
+            background-color: var(--rojo-vivo);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .play-icon-wrap:hover {
+            transform: scale(1.1);
+            background-color: #ff0000;
+        }
+
+        .play-icon-wrap svg {
+            fill: #fff;
+            margin-left: 5px;
+        }
+
+        /* NOTIFICACIONES WEB PERSONALIZADAS */
+        .custom-notification {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1a1d26;
+            border: 2px solid var(--verde-cesped);
+            color: var(--blanco);
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 110;
+            font-weight: bold;
+            transition: bottom 0.5s ease;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .custom-notification.show {
+            bottom: 30px;
+        }
+
+        /* LA TRIBUNA CON SISTEMA DE VOTACIÓN INTERACTIVO */
+        .tribuna-box {
+            background-color: var(--oscuro-tarjeta);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #1e222d;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .poll-question {
+            font-family: var(--fuante-titulos);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-button {
+            background: #1a1d26;
+            border: 2px solid #2d3748;
+            color: var(--blanco);
+            padding: 18px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-button:hover {
+            border-color: var(--verde-cesped);
+            background-color: var(--oscuro-tarjeta-hover);
+        }
+
+        .option-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background-color: rgba(40, 167, 69, 0.15);
+            width: 0%;
+            transition: width 1s ease;
+            z-index: 1;
+        }
+
+        .option-text, .option-percent {
+            position: relative;
+            z-index: 2;
+        }
+
+        .option-percent {
+            font-family: var(--fuante-titulos);
+            font-size: 1.2rem;
+            color: var(--verde-cesped);
+            display: none;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background-color: #050608;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #1e222d;
+            margin-top: 60px;
+            color: var(--gris-texto);
+            font-size: 0.9rem;
+        }
+
+        /* ANIMACIONES */
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        /* RESPONSIVO (TELÉFONOS MÓVILES) */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 40px;
+            }
+            .navbar {
+                padding: 15px 10px;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero {
+                padding: 60px 10px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .grid-cartelera {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .main-news-img {
+                height: 220px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .bracket-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- CINTA DE RESULTADOS EN VIVO (SINCRO REAL MUNDIAL 2026) -->
+    <!-- CINTA DE RESULTADOS EN VIVO (MUNDIAL Y MLB INTEGRADO) -->
     <div class="live-ticker">
         <div class="ticker-wrap">
             <div class="ticker-items">
-                <div class="ticker-item live"><span class="dot"></span>EN VIVO: Argentina 2 - 1 Países Bajos (ST 75')</div>
-                <div class="ticker-item final">AYER: Portugal 2 - 1 Croacia</div>
-                <div class="ticker-item final">AYER: Brasil 3 - 0 Japón</div>
-                <div class="ticker-item upcoming">PRÓXIMO JUEGO: Colombia vs Alemania (07:00 PM)</div>
-                <!-- Duplicados para el efecto infinito continuo -->
-                <div class="ticker-item live"><span class="dot"></span>EN VIVO: Argentina 2 - 1 Países Bajos (ST 75')</div>
-                <div class="ticker-item final">AYER: Portugal 2 - 1 Croacia</div>
+                <div class="ticker-item final">MUNDIAL: Argentina 2 - 1 Cabo Verde</div>
+                <div class="ticker-item final">MUNDIAL: Portugal 2 - 1 Croacia</div>
+                <div class="ticker-item live"><span class="dot"></span>MLB: Houston 3 - 2 Oakland (8vo Inning)</div>
+                <div class="ticker-item live"><span class="dot"></span>MLB: Boston 1 - 4 Baltimore (5to Inning)</div>
+                <div class="ticker-item final">MLB: Yankees 5 - 3 Dodgers</div>
+                <div class="ticker-item final">MLB: Phillies 4 - 1 Mets</div>
+                <div class="ticker-item upcoming">MAÑANA: Canadá vs Marruecos (1:00 PM)</div>
+                <div class="ticker-item upcoming">MAÑANA: Francia vs Paraguay (4:00 PM)</div>
+                <!-- Duplicados infinitos -->
+                <div class="ticker-item final">MUNDIAL: Argentina 2 - 1 Cabo Verde</div>
+                <div class="ticker-item final">MUNDIAL: Portugal 2 - 1 Croacia</div>
             </div>
         </div>
     </div>
 
+    <!-- MENÚ DE NAVEGACIÓN -->
     <header class="navbar">
-        <div class="logo">Deportes<span>EnÓrbita</span>Vzla</div>
+        <a href="#" class="logo">Deportes<span>EnÓrbita</span>Vzla</a>
         <nav class="nav-links">
             <a href="#" class="active">Inicio</a>
-            <a href="#">El Tercer Tiempo</a>
-            <a href="#">Grandes Eventos</a>
-            <a href="#">Multimedia</a>
+            <a href="#mundial">Mundial 2026</a>
+            <a href="#mlb">MLB</a>
+            <a href="#tribuna">La Tribuna</a>
         </nav>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero">
-        <h1>EL SHOW DEL MUNDIAL EN <span>ÓRBITA</span></h1>
-        <p>Minuto a minuto, polémicas encendidas y el color de las mejores hinchadas del planeta</p>
+        <h1>DONDE LA PASIÓN SE CONVIERTE EN <span>SHOW</span></h1>
+        <p>Minuto a minuto, polémicas en órbita y todo el color de las estrellas mundiales del deporte y el espectáculo.</p>
+        <button class="btn-orbit" onclick="location.href='#cartelera'">Ver Noticias de Hoy</button>
     </section>
 
     <main class="container">
-        <h2 class="section-title">La Cartelera</h2>
+        
+        <!-- LA CARTELERA -->
+        <h2 class="section-title" id="cartelera">La Cartelera</h2>
         <div class="grid-cartelera">
             
-            <!-- CRÓNICA REAL: PORTUGAL 2 - 1 CROACIA -->
+            <!-- Crónica Principal: Argentina vs Cabo Verde -->
             <article class="main-news">
                 <div class="main-news-img"></div>
                 <div class="card-body">
-                    <span class="tag">CRÓNICA DE PORTADA</span>
-                    <h3>🇵🇹 ¡GOLPE DE JERARQUÍA! PORTUGAL SE QUEDA CON EL DUELO ANTE CROACIA EN LOS 90'</h3>
-                    <p>La armada lusa selló una victoria clave en Toronto al derrotar 2-1 a la Croacia de Luka Modrić sin necesidad de ir al alargue. El equipo dirigido por Roberto Martínez controló el ritmo, apoyado en el empuje ofensivo y el carácter de Cristiano Ronaldo en el frente de ataque.</p>
-                    <p>El partido estuvo lleno de alto voltaje, pero la verdadera polémica de la noche llegó en la segunda mitad cuando el VAR intervino para anular un cobro penal a favor de Croacia. La decisión del cuerpo arbitral desató reclamos aireados en el banco balcánico, condicionando los minutos finales en los que Portugal supo replegarse y asegurar el resultado definitivo para avanzar con paso firme.</p>
+                    <span class="tag" style="background-color: var(--rojo-vivo);">Hazaña e Historia</span>
+                    <h3>🇦🇷 ¡SUDOR DE CAMPEÓN! ARGENTINA METE MIEDO PERO CABO VERDE SE ROBA EL SHOW EN SU DEBUT MUNDIALISTA</h3>
+                    <p>La actual campeona del mundo, Argentina, consiguió sellar una ajustada pero vital victoria 2-1 ante una aguerrida selección de Cabo Verde que hizo historia pura sobre el césped mundialista. Lo que en los papeles se preveía como un trámite cómodo para la albiceleste, se transformó en un choque volcánico donde el combinado africano vendió carísima su derrota en su primera participación absoluta en una cita de esta magnitud.</p>
+                    <p>Cabo Verde plantó un sistema táctico impecable, asfixiando las bandas de la campeona y firmando una actuación colectiva brillante que desató los aplausos de todo el estadio. Sin embargo, el factor diferencial volvió a tener nombre y apellido: Lionel Messi. El astro rosarino frotó la lámpara para colgar un golazo en el marcador, extendiendo su leyenda de proporciones astronómicas y consolidándose, de forma indiscutible, como el máximo artillero de todos los mundiales de todos los tiempos.</p>
                 </div>
             </article>
 
-            <!-- JORNADA DEL DÍA EN VIVO -->
+            <!-- Sección Lateral: Horóscopo de Capitanes -->
             <div class="side-news">
-                <h3 style="font-family:var(--fuante-titulos); font-size:1.4rem; color:var(--verde-cesped); margin-bottom:5px;">Jornada de Hoy</h3>
+                <h3 style="font-family: var(--fuante-titulos); font-size: 1.6rem; color: var(--verde-cesped); border-bottom: 2px solid #1e222d; padding-bottom: 10px;">🔮 Signos en Órbita</h3>
                 
                 <div class="side-card">
                     <div class="side-card-body">
-                        <span class="tag" style="background-color:#ff4500;">¡EN VIVO!</span>
-                        <h4>ARGENTINA DEFIENDE EL MARCADOR ANTE PAÍSES BAJOS</h4>
-                        <p>La Albiceleste mantiene el control 2-1 en un cierre electrizante del segundo tiempo. ¡Máxima tensión en las tribunas por ver quién se queda con el pase!</p>
+                        <span class="tag">Davies vs Hakimi</span>
+                        <h4>Escorpio vs Escorpio: El Choque Invisible</h4>
+                        <p>Davies (Canadá) llega guiado por Plutón con una resistencia física demoledora. Hakimi (Marruecos) tiene la conjunción de la Luna para anticipar los cortes. Pronóstico astral: ¡Los Leones del Atlas avanzan!</p>
                     </div>
                 </div>
 
                 <div class="side-card" style="border-left-color: var(--verde-cesped);">
                     <div class="side-card-body">
-                        <span class="tag" style="background-color:var(--verde-cesped);">PRÓXIMO ENCUENTRO</span>
-                        <h4>COLOMBIA VS ALEMANIA: CHOQUE DE POTENCIAS</h4>
-                        <p>Los cafeteros miden fuerzas ante el gigante europeo a las 07:00 PM en un duelo táctico imperdible para cerrar la jornada del Mundial.</p>
+                        <span class="tag" style="background-color: var(--verde-cesped);">Mbappé vs Gómez</span>
+                        <h4>Fuego contra Fuego: Duelo de Sagitarios</h4>
+                        <p>Mbappé (Francia) saltará a la cancha con Júpiter a su favor para explotar la banda. Se mide al sólido Gustavo Gómez (Paraguay), otro apasionado Sagitario. El empuje ofensivo galo inclina la balanza planetaria.</p>
                     </div>
                 </div>
             </div>
+
+        </div>
+
+        <!-- RUTA A LA FINAL (MUNDIAL 2026) -->
+        <h2 class="section-title" id="mundial">Ruta a la Final 2026</h2>
+        <div class="bracket-container">
+            <div class="bracket-grid">
+                
+                <div class="matchup">
+                    <div class="matchup-title">Cuartos de Final - Llave A</div>
+                    <div class="team-row" style="color: var(--blanco);">
+                        <span>🇵🇹 Portugal</span>
+                        <span>2</span>
+                    </div>
+                    <div class="team-row" style="color: #4a5568; text-decoration: line-through;">
+                        <span>🇭🇷 Croacia</span>
+                        <span>1</span>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="matchup-title">Cuartos de Final - Llave B</div>
+                    <div class="team-row" style="color: var(--blanco);">
+                        <span>🇦🇷 Argentina</span>
+                        <span>2</span>
+                    </div>
+                    <div class="team-row" style="color: #4a5568; text-decoration: line-through;">
+                        <span>🇨🇻 Cabo Verde</span>
+                        <span>1</span>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="matchup-title">Octavos de Final - Mañana</div>
+                    <div class="team-row">
+                        <span>🇨🇦 Canadá</span>
+                        <span>-</span>
+                    </div>
+                    <div class="team-row">
+                        <span>🇲🇦 Marruecos</span>
+                        <span>-</span>
+                    </div>
+                </div>
+
+                <div class="matchup">
+                    <div class="matchup-title">Octavos de Final - Mañana</div>
+                    <div class="team-row">
+                        <span>🇫🇷 Francia</span>
+                        <span>-</span>
+                    </div>
+                    <div class="team-row">
+                        <span>🇵🇾 Paraguay</span>
+                        <span>-</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ACCIÓN MLB -->
+        <h2 class="section-title" id="mlb">El Big Show: Acción MLB</h2>
+        <div class="mlb-grid">
             
+            <div class="mlb-card">
+                <div class="mlb-header">
+                    <span class="tag mlb-tag">Resultado Final</span>
+                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Bronx, NY</span>
+                </div>
+                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>⚾ NY Yankees</span>
+                    <span style="color: var(--verde-cesped);">5</span>
+                </div>
+                <div class="mlb-team" style="display: flex; justify-content: space-between;">
+                    <span>⚾ LA Dodgers</span>
+                    <span>3</span>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gris-texto);">Poder absoluto en el Bronx con cuadrangulares decisivos en las entradas iniciales.</p>
+            </div>
+
+            <div class="mlb-card" style="border-bottom-color: var(--azul-electrico);">
+                <div class="mlb-header">
+                    <span class="tag" style="background-color: var(--azul-electrico);">Resultado Final</span>
+                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Filadelfia</span>
+                </div>
+                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>⚾ Philadelphia Phillies</span>
+                    <span style="color: var(--verde-cesped);">4</span>
+                </div>
+                <div class="mlb-team" style="display: flex; justify-content: space-between;">
+                    <span>⚾ NY Mets</span>
+                    <span>1</span>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gris-texto);">Labor monticular intachable silencia la ofensiva rival en una gran noche de pitcheo.</p>
+            </div>
+
         </div>
 
         <!-- ZONA MULTIMEDIA -->
         <h2 class="section-title">Zona Multimedia</h2>
         <div class="multimedia-box">
-            <div class="play-icon">🎧</div>
-            <p style="font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Escucha el Debate Caliente del Podcast:<br>"¿HUBO INTENCIÓN? EL ANÁLISIS DEL PENAL ANULADO A CROACIA"</p>
+            <div class="play-icon-wrap" onclick="showNotification('¡Próximamente disponible el reproductor oficial de videos!')">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+            </div>
+            <h3 style="font-family: var(--fuante-titulos); font-size: 1.8rem; text-transform: uppercase; margin-bottom: 10px;">Los Mejores Goles de la Jornada</h3>
+            <p style="color: var(--gris-texto); max-width: 500px; margin: 0 auto;">Revive el gol récord de Messi y la gran muralla defensiva impuesta por Cabo Verde.</p>
         </div>
 
-        <!-- TRIBUNA DE INTERACCIÓN -->
-        <div class="flex-footer-widgets">
-            <div class="poll-box">
-                <h3 style="font-family:var(--fuante-titulos); margin-bottom:15px; text-transform:uppercase;">La Tribuna de Órbita</h3>
-                <p style="color:var(--gris-texto); margin-bottom:15px;">Tras la repetición del VAR, ¿estuvo bien anulado el penal contra Croacia?</p>
-                <button class="poll-option">❌ No, perjudicó por completo el cierre de Croacia</button>
-                <button class="poll-option">✅ Sí, la revisión tecnológica fue justa</button>
-                <button class="poll-option">🤷‍♂️ Jugada gris que deja muchas dudas</button>
+        <!-- LA TRIBUNA -->
+        <h2 class="section-title" id="tribuna">La Tribuna de Órbita</h2>
+        <div class="tribuna-box">
+            <p class="poll-question">¿Crees que Argentina logrará revalidar el título con el nivel mostrado ante Cabo Verde?</p>
+            <div class="poll-options">
+                
+                <button class="option-button" onclick="vote(1)">
+                    <div class="option-progress" id="bar-1"></div>
+                    <span class="option-text">🔥 Sí, el campeón sabe sufrir y Messi está intratable</span>
+                    <span class="option-percent" id="pct-1">64%</span>
+                </button>
+
+                <button class="option-button" onclick="vote(2)">
+                    <div class="option-progress" id="bar-2"></div>
+                    <span class="option-text">⚠️ No, si sufrieron con Cabo Verde, la tendrán negra más adelante</span>
+                    <span class="option-percent" id="pct-2">26%</span>
+                </button>
+
+                <button class="option-button" onclick="vote(3)">
+                    <div class="option-progress" id="bar-3"></div>
+                    <span class="option-text">🤔 Es temprano, el Mundial apenas está encendiendo motores</span>
+                    <span class="option-percent" id="pct-3">10%</span>
+                </button>
+
             </div>
         </div>
+
     </main>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="custom-notification">Notificación</div>
+
+    <footer>
+        <p>© 2026 Deportes en Órbita Vzla. Diseñado para el Deporte y el Espectáculo.</p>
+    </footer>
+
+    <!-- SCRIPT DE INTERACCIÓN -->
+    <script>
+        function vote(optionId) {
+            let percentages = {
+                1: "64%",
+                2: "26%",
+                3: "10%"
+            };
+
+            for (let i = 1; i <= 3; i++) {
+                const percentText = document.getElementById('pct-' + i);
+                const progressBar = document.getElementById('bar-' + i);
+                
+                percentText.style.display = 'block';
+                progressBar.style.width = percentages[i];
+            }
+            
+            const selectedBtn = document.querySelectorAll('.option-button')[optionId - 1];
+            selectedBtn.style.borderColor = 'var(--verde-cesped)';
+            
+            showNotification('¡Gracias por participar! Voto registrado.');
+        }
+
+        function showNotification(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 
 </body>
 </html>
