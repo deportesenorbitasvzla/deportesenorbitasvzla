@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -346,7 +347,7 @@
 
         .bracket-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
@@ -380,15 +381,15 @@
         /* SECCIÓN DE GRANDES LIGAS (MLB) */
         .mlb-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
         .mlb-card {
             background: linear-gradient(135deg, var(--oscuro-tarjeta) 0%, #1a1e29 100%);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             border-bottom: 4px solid var(--marron-cuero);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
@@ -397,12 +398,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .mlb-team {
             font-family: var(--fuante-titulos);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             letter-spacing: 0.5px;
         }
 
@@ -557,7 +558,7 @@
             100% { opacity: 1; }
         }
 
-        /* RESPONSIVO (TELÉFONOS MÓVILES) */
+        /* RESPONSIVO */
         @media (max-width: 768px) {
             body {
                 padding-top: 40px;
@@ -595,20 +596,22 @@
 </head>
 <body>
 
-    <!-- CINTA DE RESULTADOS EN VIVO (MUNDIAL Y MLB INTEGRADO) -->
+    <!-- CINTA DE RESULTADOS EN VIVO (MARCADORES ACTUALIZADOS AL DETALLE) -->
     <div class="live-ticker">
         <div class="ticker-wrap">
             <div class="ticker-items">
-                <div class="ticker-item final">MUNDIAL: Argentina 2 - 1 Cabo Verde</div>
+                <div class="ticker-item final">MUNDIAL (120'): Argentina 3 - 2 Cabo Verde</div>
                 <div class="ticker-item final">MUNDIAL: Portugal 2 - 1 Croacia</div>
-                <div class="ticker-item live"><span class="dot"></span>MLB: Houston 3 - 2 Oakland (8vo Inning)</div>
-                <div class="ticker-item live"><span class="dot"></span>MLB: Boston 1 - 4 Baltimore (5to Inning)</div>
-                <div class="ticker-item final">MLB: Yankees 5 - 3 Dodgers</div>
+                <div class="ticker-item final">MLB: Cardinals 17 - 1 Cubs</div>
+                <div class="ticker-item final">MLB: Yankees 5 - 2 Twins</div>
+                <div class="ticker-item final">MLB: Padres 2 - 0 Dodgers</div>
+                <div class="ticker-item final">MLB: Red Sox 5 - 0 Angels</div>
+                <div class="ticker-item live"><span class="dot"></span>MLB: Dbacks 3 - 3 Brewers (9no Inn)</div>
                 <div class="ticker-item final">MLB: Phillies 4 - 1 Mets</div>
                 <div class="ticker-item upcoming">MAÑANA: Canadá vs Marruecos (1:00 PM)</div>
                 <div class="ticker-item upcoming">MAÑANA: Francia vs Paraguay (4:00 PM)</div>
                 <!-- Duplicados infinitos -->
-                <div class="ticker-item final">MUNDIAL: Argentina 2 - 1 Cabo Verde</div>
+                <div class="ticker-item final">MUNDIAL (120'): Argentina 3 - 2 Cabo Verde</div>
                 <div class="ticker-item final">MUNDIAL: Portugal 2 - 1 Croacia</div>
             </div>
         </div>
@@ -638,14 +641,15 @@
         <h2 class="section-title" id="cartelera">La Cartelera</h2>
         <div class="grid-cartelera">
             
-            <!-- Crónica Principal: Argentina vs Cabo Verde -->
+            <!-- Crónica Principal: Argentina vs Cabo Verde corregida -->
             <article class="main-news">
                 <div class="main-news-img"></div>
                 <div class="card-body">
-                    <span class="tag" style="background-color: var(--rojo-vivo);">Hazaña e Historia</span>
-                    <h3>🇦🇷 ¡SUDOR DE CAMPEÓN! ARGENTINA METE MIEDO PERO CABO VERDE SE ROBA EL SHOW EN SU DEBUT MUNDIALISTA</h3>
-                    <p>La actual campeona del mundo, Argentina, consiguió sellar una ajustada pero vital victoria 2-1 ante una aguerrida selección de Cabo Verde que hizo historia pura sobre el césped mundialista. Lo que en los papeles se preveía como un trámite cómodo para la albiceleste, se transformó en un choque volcánico donde el combinado africano vendió carísima su derrota en su primera participación absoluta en una cita de esta magnitud.</p>
-                    <p>Cabo Verde plantó un sistema táctico impecable, asfixiando las bandas de la campeona y firmando una actuación colectiva brillante que desató los aplausos de todo el estadio. Sin embargo, el factor diferencial volvió a tener nombre y apellido: Lionel Messi. El astro rosarino frotó la lámpara para colgar un golazo en el marcador, extendiendo su leyenda de proporciones astronómicas y consolidándose, de forma indiscutible, como el máximo artillero de todos los mundiales de todos los tiempos.</p>
+                    <span class="tag" style="background-color: var(--rojo-vivo);">DRAMA EN 120 MINUTOS</span>
+                    <h3>🇦🇷 ¡SUDOR DE CAMPEÓN! ARGENTINA LOGRA SUFRIDA VICTORIA EN PRÓRROGA Y CABO VERDE SE DESPIDE CON DIGNIDAD HISTÓRICA</h3>
+                    <p>La actual campeona del mundo, Argentina, consiguió sellar una dramática e infartante victoria por 3-2 ante una legendaria selección de Cabo Verde que hizo historia pura sobre el césped mundialista. Lo que en el papel parecía un trámite para la albiceleste, se transformó en una batalla volcánica de 120 minutos que se definió en el último suspiro de la prórroga.</p>
+                    <p>Cabo Verde plantó un sistema táctico impecable, firmando la mejor actuación colectiva de su primera cita mundialista. El encuentro llegó igualado al tiempo extra y, en un desenlace cruel e implacable para el combinado africano, un autogol en el último minuto de la prórroga sentenció su eliminación definitiva cuando ya se saboreaban los penales.</p>
+                    <p>Por parte del equipo campeón, el factor diferencial volvió a ser Lionel Messi. El astro rosarino frotó la lámpara para colgar un golazo antológico en el marcador, extendiendo su leyenda y consolidándose firmemente como el máximo artillero de todos los mundiales de todos los tiempos.</p>
                 </div>
             </article>
 
@@ -678,7 +682,7 @@
             <div class="bracket-grid">
                 
                 <div class="matchup">
-                    <div class="matchup-title">Cuartos de Final - Llave A</div>
+                    <div class="matchup-title">Cuartos - Llave A</div>
                     <div class="team-row" style="color: var(--blanco);">
                         <span>🇵🇹 Portugal</span>
                         <span>2</span>
@@ -690,19 +694,19 @@
                 </div>
 
                 <div class="matchup">
-                    <div class="matchup-title">Cuartos de Final - Llave B</div>
+                    <div class="matchup-title">Cuartos - Llave B (TE)</div>
                     <div class="team-row" style="color: var(--blanco);">
                         <span>🇦🇷 Argentina</span>
-                        <span>2</span>
+                        <span>3</span>
                     </div>
                     <div class="team-row" style="color: #4a5568; text-decoration: line-through;">
                         <span>🇨🇻 Cabo Verde</span>
-                        <span>1</span>
+                        <span>2</span>
                     </div>
                 </div>
 
                 <div class="matchup">
-                    <div class="matchup-title">Octavos de Final - Mañana</div>
+                    <div class="matchup-title">Octavos - Mañana</div>
                     <div class="team-row">
                         <span>🇨🇦 Canadá</span>
                         <span>-</span>
@@ -714,7 +718,7 @@
                 </div>
 
                 <div class="matchup">
-                    <div class="matchup-title">Octavos de Final - Mañana</div>
+                    <div class="matchup-title">Octavos - Mañana</div>
                     <div class="team-row">
                         <span>🇫🇷 Francia</span>
                         <span>-</span>
@@ -728,40 +732,68 @@
             </div>
         </div>
 
-        <!-- ACCIÓN MLB -->
-        <h2 class="section-title" id="mlb">El Big Show: Acción MLB</h2>
+        <!-- ACCIÓN MLB REAL Y ACTUALIZADA -->
+        <h2 class="section-title" id="mlb">El Big Show: Pizarra MLB</h2>
         <div class="mlb-grid">
             
             <div class="mlb-card">
                 <div class="mlb-header">
-                    <span class="tag mlb-tag">Resultado Final</span>
+                    <span class="tag">Final</span>
                     <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Bronx, NY</span>
                 </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                     <span>⚾ NY Yankees</span>
                     <span style="color: var(--verde-cesped);">5</span>
                 </div>
                 <div class="mlb-team" style="display: flex; justify-content: space-between;">
-                    <span>⚾ LA Dodgers</span>
-                    <span>3</span>
+                    <span>⚾ Minnesota Twins</span>
+                    <span>2</span>
                 </div>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gris-texto);">Poder absoluto en el Bronx con cuadrangulares decisivos en las entradas iniciales.</p>
             </div>
 
             <div class="mlb-card" style="border-bottom-color: var(--azul-electrico);">
                 <div class="mlb-header">
-                    <span class="tag" style="background-color: var(--azul-electrico);">Resultado Final</span>
-                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Filadelfia</span>
+                    <span class="tag" style="background-color: var(--azul-electrico);">Final</span>
+                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Wrigley Field</span>
                 </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                    <span>⚾ Philadelphia Phillies</span>
-                    <span style="color: var(--verde-cesped);">4</span>
+                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span>⚾ St. Louis Cardinals</span>
+                    <span style="color: var(--verde-cesped);">17</span>
                 </div>
                 <div class="mlb-team" style="display: flex; justify-content: space-between;">
-                    <span>⚾ NY Mets</span>
+                    <span>⚾ Chicago Cubs</span>
                     <span>1</span>
                 </div>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gris-texto);">Labor monticular intachable silencia la ofensiva rival en una gran noche de pitcheo.</p>
+            </div>
+
+            <div class="mlb-card" style="border-bottom-color: #ffc107;">
+                <div class="mlb-header">
+                    <span class="tag" style="background-color: #ffc107; color: #000;">Final</span>
+                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Los Ángeles</span>
+                </div>
+                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span>⚾ San Diego Padres</span>
+                    <span style="color: var(--verde-cesped);">2</span>
+                </div>
+                <div class="mlb-team" style="display: flex; justify-content: space-between;">
+                    <span>⚾ LA Dodgers</span>
+                    <span>0</span>
+                </div>
+            </div>
+
+            <div class="mlb-card" style="border-bottom-color: var(--rojo-vivo);">
+                <div class="mlb-header">
+                    <span class="tag" style="background-color: var(--rojo-vivo);">En Vivo</span>
+                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">9no Inning</span>
+                </div>
+                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span>⚾ Arizona Dbacks</span>
+                    <span>3</span>
+                </div>
+                <div class="mlb-team" style="display: flex; justify-content: space-between;">
+                    <span>⚾ Milwaukee Brewers</span>
+                    <span>3</span>
+                </div>
             </div>
 
         </div>
@@ -775,31 +807,25 @@
                 </svg>
             </div>
             <h3 style="font-family: var(--fuante-titulos); font-size: 1.8rem; text-transform: uppercase; margin-bottom: 10px;">Los Mejores Goles de la Jornada</h3>
-            <p style="color: var(--gris-texto); max-width: 500px; margin: 0 auto;">Revive el gol récord de Messi y la gran muralla defensiva impuesta por Cabo Verde.</p>
+            <p style="color: var(--gris-texto); max-width: 500px; margin: 0 auto;">Revive el gol récord de Messi y la jugada del agónico autogol que de manera trágica y emotiva le dio el pase a los sudamericanos.</p>
         </div>
 
         <!-- LA TRIBUNA -->
         <h2 class="section-title" id="tribuna">La Tribuna de Órbita</h2>
         <div class="tribuna-box">
-            <p class="poll-question">¿Crees que Argentina logrará revalidar el título con el nivel mostrado ante Cabo Verde?</p>
+            <p class="poll-question">¿Es justo el pase de Argentina o Cabo Verde merecía llegar a los penales?</p>
             <div class="poll-options">
                 
                 <button class="option-button" onclick="vote(1)">
                     <div class="option-progress" id="bar-1"></div>
-                    <span class="option-text">🔥 Sí, el campeón sabe sufrir y Messi está intratable</span>
-                    <span class="option-percent" id="pct-1">64%</span>
+                    <span class="option-text">🏆 Totalmente justo, la jerarquía de campeón pesa hasta el final</span>
+                    <span class="option-percent" id="pct-1">48%</span>
                 </button>
 
                 <button class="option-button" onclick="vote(2)">
                     <div class="option-progress" id="bar-2"></div>
-                    <span class="option-text">⚠️ No, si sufrieron con Cabo Verde, la tendrán negra más adelante</span>
-                    <span class="option-percent" id="pct-2">26%</span>
-                </button>
-
-                <button class="option-button" onclick="vote(3)">
-                    <div class="option-progress" id="bar-3"></div>
-                    <span class="option-text">🤔 Es temprano, el Mundial apenas está encendiendo motores</span>
-                    <span class="option-percent" id="pct-3">10%</span>
+                    <span class="option-text">💔 Injusto, el fútbol le pagó mal a un Cabo Verde gigante</span>
+                    <span class="option-percent" id="pct-2">52%</span>
                 </button>
 
             </div>
@@ -818,12 +844,11 @@
     <script>
         function vote(optionId) {
             let percentages = {
-                1: "64%",
-                2: "26%",
-                3: "10%"
+                1: "48%",
+                2: "52%"
             };
 
-            for (let i = 1; i <= 3; i++) {
+            for (let i = 1; i <= 2; i++) {
                 const percentText = document.getElementById('pct-' + i);
                 const progressBar = document.getElementById('bar-' + i);
                 
@@ -850,3 +875,5 @@
 
 </body>
 </html>
+
+```
