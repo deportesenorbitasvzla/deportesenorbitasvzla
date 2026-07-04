@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deportes en Órbita Vzla | Donde la pasión se convierte en Show</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-cesped: #28a745;
+            --azul-electrico: #007bff;
+            --oscuro-fondo: #0a0a0a;
+            --oscuro-tarjeta: #161616;
+            --blanco: #ffffff;
+            --gris-texto: #b3b3b3;
+            --fuante-titulos: 'Anton', sans-serif;
+            --fuente-texto: 'Roboto', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--fuente-texto); background-color: var(--oscuro-fondo); color: var(--blanco); padding-top: 40px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* LIVE TICKER */
+        .live-ticker { background-color: #000; color: #fff; font-size: 0.8rem; font-weight: bold; padding: 10px 0; overflow: hidden; position: fixed; width: 100%; top: 0; left: 0; z-index: 100; border-bottom: 1px solid #222; }
+        .ticker-wrap { width: 100%; overflow: hidden; }
+        .ticker-items { display: flex; white-space: nowrap; animation: ticker 30s linear infinite; }
+        .ticker-item { padding: 0 20px; display: inline-flex; align-items: center; text-transform: uppercase; }
+        .ticker-item.live { color: #28a745; }
+        .ticker-item.final { color: #888; }
+        .ticker-item.upcoming { color: var(--azul-electrico); }
+
+        /* NAVBAR */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: #000; border-bottom: 1px solid #111; }
+        .logo { font-family: var(--fuante-titulos); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: var(--verde-cesped); }
+        .nav-links a { color: var(--blanco); text-decoration: none; margin-left: 20px; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
+        .nav-links a.active { border-bottom: 2px solid var(--verde-cesped); padding-bottom: 5px; }
+
+        /* HERO */
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1510563800743-aed2364902b8?q=80&w=1200') no-repeat center center/cover; padding: 100px 20px; text-align: center; }
+        .hero h1 { font-family: var(--fuante-titulos); font-size: 4rem; line-height: 1; margin-bottom: 20px; }
+        .hero h1 span { color: var(--verde-cesped); }
+        .hero p { color: var(--gris-texto); font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px; text-transform: uppercase; letter-spacing: 1px; }
+        .btn { display: inline-block; background-color: #8B4513; color: var(--blanco); padding: 12px 30px; text-decoration: none; font-weight: bold; text-transform: uppercase; border-radius: 4px; font-size: 0.9rem; }
+
+        /* CARTELERA */
+        .section-title { font-family: var(--fuante-titulos); font-size: 2.2rem; margin: 40px 0 20px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .section-title::before { content: ''; display: inline-block; width: 6px; height: 30px; background-color: var(--verde-cesped); }
+        
+        .grid-cartelera { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+        .main-news { background-color: var(--oscuro-tarjeta); border-radius: 8px; overflow: hidden; border-bottom: 4px solid var(--verde-cesped); }
+        .main-news-img { height: 300px; background: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800') center/cover; }
+        .card-body { padding: 25px; }
+        .tag { background-color: var(--azul-electrico); color: #fff; padding: 4px 8px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
+        .main-news h3 { font-family: var(--fuante-titulos); font-size: 1.8rem; margin-bottom: 15px; line-height: 1.2; }
+        .main-news p { color: var(--gris-texto); font-size: 0.95rem; }
+
+        .side-news { display: flex; flex-direction: column; gap: 20px; }
+        .side-card { background-color: var(--oscuro-tarjeta); display: flex; border-radius: 8px; overflow: hidden; height: 135px; }
+        .side-card-img { width: 35%; background-size: cover; background-position: center; }
+        .side-card-body { padding: 15px; width: 65%; }
+        .side-card h4 { font-family: var(--fuante-titulos); font-size: 1.1rem; margin-top: 5px; }
+
+        /* MULTIMEDIA & TRIBUNA */
+        .multimedia-box { background-color: #111; border: 1px solid #222; padding: 40px; text-align: center; border-radius: 8px; margin-bottom: 40px; }
+        .play-icon { font-size: 3rem; color: var(--azul-electrico); margin-bottom: 15px; cursor: pointer; }
+        
+        .flex-footer-widgets { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+        .poll-box { background-color: var(--oscuro-tarjeta); padding: 25px; border-radius: 8px; border: 1px solid #222; }
+        .poll-option { display: block; width: 100%; padding: 12px; margin-bottom: 10px; background: #222; border: 1px solid #333; color: #fff; text-align: left; border-radius: 4px; font-size: 0.9rem; }
+
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+        @media (max-width: 768px) { .grid-cartelera, .flex-footer-widgets { grid-template-columns: 1fr; } .nav-links { display: none; } .hero h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+
+    <div class="live-ticker">
+        <div class="ticker-wrap">
+            <div class="ticker-items">
+                <div class="ticker-item final">FINAL: Portugal 1 (4) - (2) 1 Croacia</div>
+                <div class="ticker-item live"><span style="color:#28a745;margin-right:5px;">•</span> EN VIVO: España 0 - 0 Italia</div>
+                <div class="ticker-item final">FINAL: Argentina 2 - 1 Países Bajos</div>
+                <div class="ticker-item final">FINAL: Portugal 1 (4) - (2) 1 Croacia</div>
+                <div class="ticker-item live"><span style="color:#28a745;margin-right:5px;">•</span> EN VIVO: España 0 - 0 Italia</div>
+            </div>
+        </div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo">Deportes<span>EnÓrbita</span>Vzla</div>
+        <nav class="nav-links">
+            <a href="#" class="active">Inicio</a>
+            <a href="#">El Tercer Tiempo</a>
+            <a href="#">Grandes Eventos</a>
+            <a href="#">Multimedia</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>DONDE LA PASIÓN SE CONVIERTE EN <span>SHOW</span></h1>
+        <p>Crónicas Épicas, Lifestyle, El Horóscopo de la Cancha y El Color Fuera de la Cancha</p>
+        <a href="#" class="btn">¡Entra al Tercer Tiempo!</a>
+    </section>
+
+    <main class="container">
+        <h2 class="section-title">La Cartelera</h2>
+        <div class="grid-cartelera">
+            <article class="main-news">
+                <div class="main-news-img"></div>
+                <div class="card-body">
+                    <span class="tag">Crónica</span>
+                    <h3>🇵🇹 ¡HÉROES EN LOS PENALES! PORTUGAL ELIMINA A CROACIA EN EL 'ÚLTIMO BAILE' DE CRISTIANO Y MODRIĆ</h3>
+                    <p>En un cierre cinematográfico en Toronto, la armada lusa avanza a Cuartos de Final tras imponerse en una cardíaca tanda de penales (4-2). Diogo Costa fue el héroe tapando dos ejecuciones y el 'Bicho' no falló desde los doce pasos.</p>
+                </div>
+            </article>
+
+            <div class="side-news">
+                <div class="side-card">
+                    <div class="side-card-img" style="background-image:url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=400')"></div>
+                    <div class="side-card-body">
+                        <span class="tag" style="background-color:var(--azul-electrico)">Tendencias</span>
+                        <h4>ICONOS DEL DEPORTE: EL OUTFIT DEL AÑO</h4>
+                    </div>
+                </div>
+                <div class="side-card">
+                    <div class="side-card-img" style="background-image:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400')"></div>
+                    <div class="side-card-body">
+                        <span class="tag" style="background-color:var(--azul-electrico)">Música</span>
+                        <h4>LOS RITMOS URBANOS SE TOMAN LAS TRIBUNAS</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Zona Multimedia</h2>
+        <div class="multimedia-box">
+            <div class="play-icon">▶</div>
+            <p style="font-weight:bold; text-transform:uppercase;">Reproducir último episodio del Podcast:<br>"EL SHOW DEL JUEGO"</p>
+        </div>
+
+        <div class="flex-footer-widgets">
+            <div class="poll-box">
+                <h3 style="font-family:var(--fuante-titulos); margin-bottom:15px; text-transform:uppercase;">Encuesta del Día</h3>
+                <p style="color:var(--gris-texto); margin-bottom:15px;">¿Quién dio el mejor espectáculo este fin de semana?</p>
+                <button class="poll-option">⚪ Opción 1</button>
+                <button class="poll-option">⚪ Opción 2</button>
+                <button class="poll-option">⚪ Opción 3</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
