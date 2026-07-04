@@ -1,879 +1,142 @@
-html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deportes en Órbita Vzla | El Show de la Cancha</title>
-    
-    <!-- Fuentes premium de Google Fonts -->
+    <title>Deportes en Órbita Vzla | Noticias Mundiales y MLB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
-        /* PALETA DE COLORES E IDENTIDAD VISUAL */
-        :root {
-            --verde-cesped: #28a745;
-            --azul-electrico: #007bff;
-            --oscuro-fondo: #0d0e12;
-            --oscuro-tarjeta: #161920;
-            --oscuro-tarjeta-hover: #1e222d;
-            --blanco: #ffffff;
-            --gris-texto: #a0aec0;
-            --marron-cuero: #8B4513;
-            --rojo-vivo: #e53e3e;
-            --fuante-titulos: 'Anton', sans-serif;
-            --fuente-texto: 'Space Grotesk', sans-serif;
-        }
-
-        /* CONFIGURACIÓN GENERAL */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--fuente-texto);
-            background-color: var(--oscuro-fondo);
-            color: var(--blanco);
-            padding-top: 45px;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* CINTA DE RESULTADOS EN VIVO */
-        .live-ticker {
-            background-color: #000;
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding: 12px 0;
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            border-bottom: 2px solid var(--verde-cesped);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .ticker-items {
-            display: flex;
-            white-space: nowrap;
-            animation: ticker 35s linear infinite;
-        }
-
-        .ticker-items:hover {
-            animation-play-state: paused;
-            cursor: pointer;
-        }
-
-        .ticker-item {
-            padding: 0 30px;
-            display: inline-flex;
-            align-items: center;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .ticker-item.live {
-            color: var(--rojo-vivo);
-        }
-
-        .ticker-item.live .dot {
-            height: 8px;
-            width: 8px;
-            background-color: var(--rojo-vivo);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-            animation: pulse 1s infinite;
-        }
-
-        .ticker-item.final {
-            color: var(--gris-texto);
-        }
-
-        .ticker-item.upcoming {
-            color: var(--azul-electrico);
-        }
-
-        /* MENÚ DE NAVEGACIÓN */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.95);
-            border-bottom: 1px solid #1e222d;
-            position: sticky;
-            top: 45px;
-            z-index: 90;
-        }
-
-        .logo {
-            font-family: var(--fuante-titulos);
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-decoration: none;
-            color: var(--blanco);
-        }
-
-        .logo span {
-            color: var(--verde-cesped);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            color: var(--blanco);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            transition: color 0.3s, border-color 0.3s;
-            padding-bottom: 5px;
-            border-bottom: 2px solid transparent;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--verde-cesped);
-            border-color: var(--verde-cesped);
-        }
-
-        /* SECCIÓN HERO (PORTADA PRINCIPAL) */
-        .hero {
-            position: relative;
-            background: linear-gradient(rgba(13, 14, 18, 0.5), rgba(13, 14, 18, 0.95)), 
-                        url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1200') no-repeat center center/cover;
-            padding: 100px 20px;
-            text-align: center;
-            border-bottom: 1px solid #1e222d;
-        }
-
-        .hero h1 {
-            font-family: var(--fuante-titulos);
-            font-size: 4.5rem;
-            line-height: 0.95;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            text-transform: uppercase;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
-        }
-
-        .hero h1 span {
-            color: var(--verde-cesped);
-        }
-
-        .hero p {
-            color: var(--gris-texto);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        .btn-orbit {
-            display: inline-block;
-            background-color: var(--verde-cesped);
-            color: var(--blanco);
-            padding: 14px 35px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-orbit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
-            background-color: #218838;
-        }
-
-        /* SECCIONES: TÍTULOS */
-        .section-title {
-            font-family: var(--fuante-titulos);
-            font-size: 2.5rem;
-            margin: 50px 0 25px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            letter-spacing: 1px;
-        }
-
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 35px;
-            background-color: var(--verde-cesped);
-            border-radius: 4px;
-        }
-
-        /* GRID DE LA CARTELERA */
-        .grid-cartelera {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr;
-            gap: 30px;
-        }
-
-        /* NOTICIA PRINCIPAL */
-        .main-news {
-            background-color: var(--oscuro-tarjeta);
-            border-radius: 12px;
-            overflow: hidden;
-            border-bottom: 5px solid var(--verde-cesped);
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .main-news:hover {
-            transform: translateY(-5px);
-        }
-
-        .main-news-img {
-            height: 380px;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1489945052260-4f21c52268b9?q=80&w=800') center/cover;
-        }
-
-        .card-body {
-            padding: 30px;
-        }
-
-        .tag {
-            background-color: var(--azul-electrico);
-            color: #fff;
-            padding: 5px 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .main-news h3 {
-            font-family: var(--fuante-titulos);
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            line-height: 1.1;
-            color: var(--blanco);
-        }
-
-        .main-news p {
-            color: var(--gris-texto);
-            font-size: 1.05rem;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        /* NOTICIAS SECUNDARIAS */
-        .side-news {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .side-card {
-            background-color: var(--oscuro-tarjeta);
-            border-radius: 12px;
-            overflow: hidden;
-            border-left: 5px solid var(--azul-electrico);
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .side-card:hover {
-            transform: translateX(5px);
-            background-color: var(--oscuro-tarjeta-hover);
-        }
-
-        .side-card-body {
-            padding: 20px;
-        }
-
-        .side-card h4 {
-            font-family: var(--fuante-titulos);
-            font-size: 1.4rem;
-            margin-top: 5px;
-            color: var(--blanco);
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-
-        .side-card p {
-            color: var(--gris-texto);
-            font-size: 0.95rem;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
-
-        /* BRACKET DEL MUNDIAL */
-        .bracket-container {
-            background-color: var(--oscuro-tarjeta);
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid #1e222d;
-            margin-top: 30px;
-        }
-
-        .bracket-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .matchup {
-            background: #101216;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #1e222d;
-            text-align: center;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .matchup-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--verde-cesped);
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .team-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 0;
-            font-size: 0.95rem;
-            font-weight: 700;
-        }
-
-        /* SECCIÓN DE GRANDES LIGAS (MLB) */
-        .mlb-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .mlb-card {
-            background: linear-gradient(135deg, var(--oscuro-tarjeta) 0%, #1a1e29 100%);
-            border-radius: 12px;
-            padding: 20px;
-            border-bottom: 4px solid var(--marron-cuero);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .mlb-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .mlb-team {
-            font-family: var(--fuante-titulos);
-            font-size: 1.3rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* ZONA MULTIMEDIA */
-        .multimedia-box {
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.95)), 
-                        url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800') center/cover;
-            border: 2px solid #1e222d;
-            padding: 60px 20px;
-            text-align: center;
-            border-radius: 12px;
-            margin: 40px 0;
-        }
-
-        .play-icon-wrap {
-            height: 80px;
-            width: 80px;
-            background-color: var(--rojo-vivo);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .play-icon-wrap:hover {
-            transform: scale(1.1);
-            background-color: #ff0000;
-        }
-
-        .play-icon-wrap svg {
-            fill: #fff;
-            margin-left: 5px;
-        }
-
-        /* NOTIFICACIONES WEB PERSONALIZADAS */
-        .custom-notification {
-            position: fixed;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #1a1d26;
-            border: 2px solid var(--verde-cesped);
-            color: var(--blanco);
-            padding: 15px 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 110;
-            font-weight: bold;
-            transition: bottom 0.5s ease;
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-        }
-
-        .custom-notification.show {
-            bottom: 30px;
-        }
-
-        /* LA TRIBUNA CON SISTEMA DE VOTACIÓN INTERACTIVO */
-        .tribuna-box {
-            background-color: var(--oscuro-tarjeta);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #1e222d;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .poll-question {
-            font-family: var(--fuante-titulos);
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .poll-options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .option-button {
-            background: #1a1d26;
-            border: 2px solid #2d3748;
-            color: var(--blanco);
-            padding: 18px;
-            border-radius: 8px;
-            text-align: left;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .option-button:hover {
-            border-color: var(--verde-cesped);
-            background-color: var(--oscuro-tarjeta-hover);
-        }
-
-        .option-progress {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            background-color: rgba(40, 167, 69, 0.15);
-            width: 0%;
-            transition: width 1s ease;
-            z-index: 1;
-        }
-
-        .option-text, .option-percent {
-            position: relative;
-            z-index: 2;
-        }
-
-        .option-percent {
-            font-family: var(--fuante-titulos);
-            font-size: 1.2rem;
-            color: var(--verde-cesped);
-            display: none;
-        }
-
-        /* PIE DE PÁGINA */
-        footer {
-            background-color: #050608;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid #1e222d;
-            margin-top: 60px;
-            color: var(--gris-texto);
-            font-size: 0.9rem;
-        }
-
-        /* ANIMACIONES */
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
-        }
-
-        /* RESPONSIVO */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 40px;
-            }
-            .navbar {
-                padding: 15px 10px;
-            }
-            .logo {
-                font-size: 1.5rem;
-            }
-            .nav-links {
-                display: none;
-            }
-            .hero {
-                padding: 60px 10px;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .grid-cartelera {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            .main-news-img {
-                height: 220px;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .bracket-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #050608; }
+        .font-impact { font-family: 'Anton', sans-serif; }
+        .marquee { display: flex; overflow: hidden; user-select: none; gap: 2rem; }
+        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 2rem; animation: scroll 25s linear infinite; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
     </style>
 </head>
-<body>
+<body class="text-gray-100 min-h-screen flex flex-col justify-between">
 
-    <!-- CINTA DE RESULTADOS EN VIVO (MARCADORES ACTUALIZADOS AL DETALLE) -->
-    <div class="live-ticker">
-        <div class="ticker-wrap">
-            <div class="ticker-items">
-                <div class="ticker-item final">MUNDIAL (120'): Argentina 3 - 2 Cabo Verde</div>
-                <div class="ticker-item final">MUNDIAL: Portugal 2 - 1 Croacia</div>
-                <div class="ticker-item final">MLB: Cardinals 17 - 1 Cubs</div>
-                <div class="ticker-item final">MLB: Yankees 5 - 2 Twins</div>
-                <div class="ticker-item final">MLB: Padres 2 - 0 Dodgers</div>
-                <div class="ticker-item final">MLB: Red Sox 5 - 0 Angels</div>
-                <div class="ticker-item live"><span class="dot"></span>MLB: Dbacks 3 - 3 Brewers (9no Inn)</div>
-                <div class="ticker-item final">MLB: Phillies 4 - 1 Mets</div>
-                <div class="ticker-item upcoming">MAÑANA: Canadá vs Marruecos (1:00 PM)</div>
-                <div class="ticker-item upcoming">MAÑANA: Francia vs Paraguay (4:00 PM)</div>
-                <!-- Duplicados infinitos -->
-                <div class="ticker-item final">MUNDIAL (120'): Argentina 3 - 2 Cabo Verde</div>
-                <div class="ticker-item final">MUNDIAL: Portugal 2 - 1 Croacia</div>
+    <!-- CINTA EN VIVO / MARQUESINA -->
+    <div class="w-full bg-slate-900 border-b border-slate-800 py-2.5 overflow-hidden">
+        <div class="marquee text-xs font-bold tracking-wider uppercase">
+            <div class="marquee-content text-green-400">
+                <span>⚽ MUNDIAL (FINAL): Canadá 1 - 2 Marruecos 🇲🇦</span>
+                <span>⚽ MUNDIAL (FINAL): Francia 1 - 0 Paraguay 🇵🇾</span>
+                <span>⚾ MLB (EN VIVO): Yankees 4 - 2 Red Sox (7mo Inn)</span>
+                <span>⚾ MLB (EN VIVO): Dodgers 5 - 5 Padres (8vo Inn)</span>
+                <span>⚾ MLB (FINAL): Astros 6 - 1 Athletics</span>
+                <span>⚾ MLB (FINAL): Braves 4 - 3 Mets</span>
+            </div>
+            <!-- Duplicado para efecto infinito fluido -->
+            <div class="marquee-content text-green-400" aria-hidden="true">
+                <span>⚽ MUNDIAL (FINAL): Canadá 1 - 2 Marruecos 🇲🇦</span>
+                <span>⚽ MUNDIAL (FINAL): Francia 1 - 0 Paraguay 🇵🇾</span>
+                <span>⚾ MLB (EN VIVO): Yankees 4 - 2 Red Sox (7mo Inn)</span>
+                <span>⚾ MLB (EN VIVO): Dodgers 5 - 5 Padres (8vo Inn)</span>
+                <span>⚾ MLB (FINAL): Astros 6 - 1 Athletics</span>
+                <span>⚾ MLB (FINAL): Braves 4 - 3 Mets</span>
             </div>
         </div>
     </div>
 
-    <!-- MENÚ DE NAVEGACIÓN -->
-    <header class="navbar">
-        <a href="#" class="logo">Deportes<span>EnÓrbita</span>Vzla</a>
-        <nav class="nav-links">
-            <a href="#" class="active">Inicio</a>
-            <a href="#mundial">Mundial 2026</a>
-            <a href="#mlb">MLB</a>
-            <a href="#tribuna">La Tribuna</a>
-        </nav>
+    <!-- LOGO Y ENCABEZADO -->
+    <header class="text-center py-8 max-w-4xl mx-auto px-4">
+        <h1 class="font-impact text-5xl md:text-6xl tracking-wider text-white">DEPORTES<span class="text-green-500">ENÓRBITA</span>VZLA</h1>
+        <p class="text-xs uppercase tracking-widest text-gray-400 mt-2">Crónicas Mundiales, MLB y Predicciones Astrales</p>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <h1>DONDE LA PASIÓN SE CONVIERTE EN <span>SHOW</span></h1>
-        <p>Minuto a minuto, polémicas en órbita y todo el color de las estrellas mundiales del deporte y el espectáculo.</p>
-        <button class="btn-orbit" onclick="location.href='#cartelera'">Ver Noticias de Hoy</button>
-    </section>
-
-    <main class="container">
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-4xl w-full mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         
-        <!-- LA CARTELERA -->
-        <h2 class="section-title" id="cartelera">La Cartelera</h2>
-        <div class="grid-cartelera">
+        <!-- SECCIÓN DE CRÓNICAS (2 COLUMNAS) -->
+        <section class="md:col-span-2 flex flex-col gap-8">
             
-            <!-- Crónica Principal: Argentina vs Cabo Verde corregida -->
-            <article class="main-news">
-                <div class="main-news-img"></div>
-                <div class="card-body">
-                    <span class="tag" style="background-color: var(--rojo-vivo);">DRAMA EN 120 MINUTOS</span>
-                    <h3>🇦🇷 ¡SUDOR DE CAMPEÓN! ARGENTINA LOGRA SUFRIDA VICTORIA EN PRÓRROGA Y CABO VERDE SE DESPIDE CON DIGNIDAD HISTÓRICA</h3>
-                    <p>La actual campeona del mundo, Argentina, consiguió sellar una dramática e infartante victoria por 3-2 ante una legendaria selección de Cabo Verde que hizo historia pura sobre el césped mundialista. Lo que en el papel parecía un trámite para la albiceleste, se transformó en una batalla volcánica de 120 minutos que se definió en el último suspiro de la prórroga.</p>
-                    <p>Cabo Verde plantó un sistema táctico impecable, firmando la mejor actuación colectiva de su primera cita mundialista. El encuentro llegó igualado al tiempo extra y, en un desenlace cruel e implacable para el combinado africano, un autogol en el último minuto de la prórroga sentenció su eliminación definitiva cuando ya se saboreaban los penales.</p>
-                    <p>Por parte del equipo campeón, el factor diferencial volvió a ser Lionel Messi. El astro rosarino frotó la lámpara para colgar un golazo antológico en el marcador, extendiendo su leyenda y consolidándose firmemente como el máximo artillero de todos los mundiales de todos los tiempos.</p>
-                </div>
+            <!-- NOTICIA 1 -->
+            <article class="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+                <span class="text-xs font-bold text-green-500 uppercase tracking-wider">Mundial 2026 • Octavos de Final</span>
+                <h2 class="font-impact text-2xl md:text-3xl text-white uppercase mt-1 mb-3">¡Los Leones del Atlas en órbita! Marruecos impone su ley ante Canadá y avanza</h2>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    <strong>Boston / Deportes en Órbita Vzla.</strong> La selección de Marruecos volvió a demostrar por qué es una de las potencias más respetadas al sellar hoy una sólida victoria por 2-1 ante una combativa Canadá, asegurando su boleto directo a los Cuartos de Final. El encuentro, disputado a máxima intensidad en el Estadio de Boston, cumplió con todas las expectativas de un choque de eliminación directa.
+                </p>
+                <p class="text-sm text-gray-400 leading-relaxed mt-3">
+                    Desde el pitazo inicial, el conjunto marroquí tomó las riendas con un orden táctico impecable y transiciones letales. La velocidad por las bandas y la solidez defensiva ahogaron el ímpetu de los norteamericanos. Canadá intentó reaccionar en la segunda mitad adelantando líneas, pero los Leones del Atlas supieron sufrir para congelar el resultado. Con este triunfo, Marruecos sigue escribiendo páginas doradas.
+                </p>
             </article>
 
-            <!-- Sección Lateral: Horóscopo de Capitanes -->
-            <div class="side-news">
-                <h3 style="font-family: var(--fuante-titulos); font-size: 1.6rem; color: var(--verde-cesped); border-bottom: 2px solid #1e222d; padding-bottom: 10px;">🔮 Signos en Órbita</h3>
-                
-                <div class="side-card">
-                    <div class="side-card-body">
-                        <span class="tag">Davies vs Hakimi</span>
-                        <h4>Escorpio vs Escorpio: El Choque Invisible</h4>
-                        <p>Davies (Canadá) llega guiado por Plutón con una resistencia física demoledora. Hakimi (Marruecos) tiene la conjunción de la Luna para anticipar los cortes. Pronóstico astral: ¡Los Leones del Atlas avanzan!</p>
-                    </div>
-                </div>
+            <!-- NOTICIA 2 -->
+            <article class="bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+                <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Mundial 2026 • Octavos de Final</span>
+                <h2 class="font-impact text-2xl md:text-3xl text-white uppercase mt-1 mb-3">¡Batalla física en Philadelphia! Francia doblega a un guerrero Paraguay con récord de Mbappé</h2>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    <strong>Philadelphia / Deportes en Órbita Vzla.</strong> En un partido no apto para cardíacos, Francia avanzó a los Cuartos de Final tras derrotar por la mínima (1-0) a una aguerrida selección de Paraguay que vendió cara su derrota. El Estadio de Philadelphia fue testigo de un compromiso sumamente físico, trabado en la mitad de la cancha y caracterizado por el roce constante.
+                </p>
+                <p class="text-sm text-gray-400 leading-relaxed mt-3">
+                    La Albirroja plantó un muro defensivo monumental, cortando los circuitos franceses con una marca asfixiante. Sin embargo, cuando el partido parecía destinado al desgaste absoluto, apareció Kylian Mbappé. Aprovechando un espacio milimétrico, "Kiki" frotó la lámpara y mandó el balón al fondo de la red para anotar su <strong>séptimo gol</strong> de esta cita mundialista, afianzándose en la cima de los máximos artilleros del torneo.
+                </p>
+            </article>
 
-                <div class="side-card" style="border-left-color: var(--verde-cesped);">
-                    <div class="side-card-body">
-                        <span class="tag" style="background-color: var(--verde-cesped);">Mbappé vs Gómez</span>
-                        <h4>Fuego contra Fuego: Duelo de Sagitarios</h4>
-                        <p>Mbappé (Francia) saltará a la cancha con Júpiter a su favor para explotar la banda. Se mide al sólido Gustavo Gómez (Paraguay), otro apasionado Sagitario. El empuje ofensivo galo inclina la balanza planetaria.</p>
-                    </div>
-                </div>
+        </section>
+
+        <!-- COLUMNA DEL HORÓSCOPO DEPORTIVO (1 COLUMNA) -->
+        <aside class="bg-gradient-to-b from-slate-900 to-slate-950 p-6 rounded-2xl border border-purple-900/40 h-fit">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-xl">🔮</span>
+                <h3 class="font-impact text-xl text-purple-400 tracking-wider uppercase">El Horóscopo de Órbita</h3>
             </div>
-
-        </div>
-
-        <!-- RUTA A LA FINAL (MUNDIAL 2026) -->
-        <h2 class="section-title" id="mundial">Ruta a la Final 2026</h2>
-        <div class="bracket-container">
-            <div class="bracket-grid">
-                
-                <div class="matchup">
-                    <div class="matchup-title">Cuartos - Llave A</div>
-                    <div class="team-row" style="color: var(--blanco);">
-                        <span>🇵🇹 Portugal</span>
-                        <span>2</span>
-                    </div>
-                    <div class="team-row" style="color: #4a5568; text-decoration: line-through;">
-                        <span>🇭🇷 Croacia</span>
-                        <span>1</span>
-                    </div>
-                </div>
-
-                <div class="matchup">
-                    <div class="matchup-title">Cuartos - Llave B (TE)</div>
-                    <div class="team-row" style="color: var(--blanco);">
-                        <span>🇦🇷 Argentina</span>
-                        <span>3</span>
-                    </div>
-                    <div class="team-row" style="color: #4a5568; text-decoration: line-through;">
-                        <span>🇨🇻 Cabo Verde</span>
-                        <span>2</span>
-                    </div>
-                </div>
-
-                <div class="matchup">
-                    <div class="matchup-title">Octavos - Mañana</div>
-                    <div class="team-row">
-                        <span>🇨🇦 Canadá</span>
-                        <span>-</span>
-                    </div>
-                    <div class="team-row">
-                        <span>🇲🇦 Marruecos</span>
-                        <span>-</span>
-                    </div>
-                </div>
-
-                <div class="matchup">
-                    <div class="matchup-title">Octavos - Mañana</div>
-                    <div class="team-row">
-                        <span>🇫🇷 Francia</span>
-                        <span>-</span>
-                    </div>
-                    <div class="team-row">
-                        <span>🇵🇾 Paraguay</span>
-                        <span>-</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ACCIÓN MLB REAL Y ACTUALIZADA -->
-        <h2 class="section-title" id="mlb">El Big Show: Pizarra MLB</h2>
-        <div class="mlb-grid">
+            <p class="text-xs text-gray-400 mb-4 uppercase tracking-widest font-bold">Balance de la Jornada Astral</p>
             
-            <div class="mlb-card">
-                <div class="mlb-header">
-                    <span class="tag">Final</span>
-                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Bronx, NY</span>
+            <div class="flex flex-col gap-5 text-xs border-t border-slate-800 pt-4">
+                <div>
+                    <h4 class="font-bold text-green-400 uppercase mb-1">🇨🇦 Canadá vs Marruecos 🇲🇦</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        <strong>Choque de Escorpios:</strong> Aunque Alphonso Davies mostró una resistencia física demoledora guiada por Plutón, fue <strong>Achraf Hakimi</strong> quien mejor canalizó la conjunción de la Luna en el día de hoy. La frialdad marroquí para anticipar los cortes y la paciencia del signo de agua permitieron a los Leones dominar las corrientes cósmicas.
+                    </p>
                 </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span>⚾ NY Yankees</span>
-                    <span style="color: var(--verde-cesped);">5</span>
-                </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between;">
-                    <span>⚾ Minnesota Twins</span>
-                    <span>2</span>
+
+                <div class="border-t border-slate-800/50 pt-4">
+                    <h4 class="font-bold text-blue-400 uppercase mb-1">🇫🇷 Francia vs Paraguay 🇵🇾</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        <strong>Fuego contra Fuego:</strong> El choque de Sagitarios entre Mbappé y Gustavo Gómez fue la batalla física anticipada. Gómez, un Sagitario testarudo, plantó bandera con una fuerza física descomunal. Sin embargo, <strong>Mbappé</strong> contó con el impulso expansivo de Júpiter, transformando esa energía de fuego en un chispazo letal para marcar su séptimo gol.
+                    </p>
                 </div>
             </div>
-
-            <div class="mlb-card" style="border-bottom-color: var(--azul-electrico);">
-                <div class="mlb-header">
-                    <span class="tag" style="background-color: var(--azul-electrico);">Final</span>
-                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Wrigley Field</span>
-                </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span>⚾ St. Louis Cardinals</span>
-                    <span style="color: var(--verde-cesped);">17</span>
-                </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between;">
-                    <span>⚾ Chicago Cubs</span>
-                    <span>1</span>
-                </div>
-            </div>
-
-            <div class="mlb-card" style="border-bottom-color: #ffc107;">
-                <div class="mlb-header">
-                    <span class="tag" style="background-color: #ffc107; color: #000;">Final</span>
-                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">Los Ángeles</span>
-                </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span>⚾ San Diego Padres</span>
-                    <span style="color: var(--verde-cesped);">2</span>
-                </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between;">
-                    <span>⚾ LA Dodgers</span>
-                    <span>0</span>
-                </div>
-            </div>
-
-            <div class="mlb-card" style="border-bottom-color: var(--rojo-vivo);">
-                <div class="mlb-header">
-                    <span class="tag" style="background-color: var(--rojo-vivo);">En Vivo</span>
-                    <span style="color: var(--gris-texto); font-size: 0.8rem; font-weight: bold;">9no Inning</span>
-                </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span>⚾ Arizona Dbacks</span>
-                    <span>3</span>
-                </div>
-                <div class="mlb-team" style="display: flex; justify-content: space-between;">
-                    <span>⚾ Milwaukee Brewers</span>
-                    <span>3</span>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- ZONA MULTIMEDIA -->
-        <h2 class="section-title">Zona Multimedia</h2>
-        <div class="multimedia-box">
-            <div class="play-icon-wrap" onclick="showNotification('¡Próximamente disponible el reproductor oficial de videos!')">
-                <svg width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-            </div>
-            <h3 style="font-family: var(--fuante-titulos); font-size: 1.8rem; text-transform: uppercase; margin-bottom: 10px;">Los Mejores Goles de la Jornada</h3>
-            <p style="color: var(--gris-texto); max-width: 500px; margin: 0 auto;">Revive el gol récord de Messi y la jugada del agónico autogol que de manera trágica y emotiva le dio el pase a los sudamericanos.</p>
-        </div>
-
-        <!-- LA TRIBUNA -->
-        <h2 class="section-title" id="tribuna">La Tribuna de Órbita</h2>
-        <div class="tribuna-box">
-            <p class="poll-question">¿Es justo el pase de Argentina o Cabo Verde merecía llegar a los penales?</p>
-            <div class="poll-options">
-                
-                <button class="option-button" onclick="vote(1)">
-                    <div class="option-progress" id="bar-1"></div>
-                    <span class="option-text">🏆 Totalmente justo, la jerarquía de campeón pesa hasta el final</span>
-                    <span class="option-percent" id="pct-1">48%</span>
-                </button>
-
-                <button class="option-button" onclick="vote(2)">
-                    <div class="option-progress" id="bar-2"></div>
-                    <span class="option-text">💔 Injusto, el fútbol le pagó mal a un Cabo Verde gigante</span>
-                    <span class="option-percent" id="pct-2">52%</span>
-                </button>
-
-            </div>
-        </div>
+        </aside>
 
     </main>
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="custom-notification">Notificación</div>
-
-    <footer>
-        <p>© 2026 Deportes en Órbita Vzla. Diseñado para el Deporte y el Espectáculo.</p>
+    <!-- PIE DE PÁGINA -->
+    <footer class="w-full text-center py-6 bg-slate-950 border-t border-slate-900 text-xs text-gray-500">
+        <p>&copy; 2026 Deportes en Órbita Vzla. Diseñado con pasión periodística.</p>
     </footer>
-
-    <!-- SCRIPT DE INTERACCIÓN -->
-    <script>
-        function vote(optionId) {
-            let percentages = {
-                1: "48%",
-                2: "52%"
-            };
-
-            for (let i = 1; i <= 2; i++) {
-                const percentText = document.getElementById('pct-' + i);
-                const progressBar = document.getElementById('bar-' + i);
-                
-                percentText.style.display = 'block';
-                progressBar.style.width = percentages[i];
-            }
-            
-            const selectedBtn = document.querySelectorAll('.option-button')[optionId - 1];
-            selectedBtn.style.borderColor = 'var(--verde-cesped)';
-            
-            showNotification('¡Gracias por participar! Voto registrado.');
-        }
-
-        function showNotification(message) {
-            const toast = document.getElementById('toast');
-            toast.innerText = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-    </script>
 
 </body>
 </html>
+```eof
 
-```
+---
+
+### 📱 2. Texto optimizado para el Post de Instagram (Caption)
+
+> 🔮⚽ **¡LOS ASTROS DICTARON SENTENCIA EN EL MUNDIAL!** 🇲🇦🇫🇷
+> 
+> ¡Qué jornada de infarto acabamos de vivir este sábado 4 de julio! El orden cósmico y la jerarquía se alinearon en los Octavos de Final. Aquí te dejamos el resumen de lo acontecido:
+> 
+> 🦁 **¡MARRUECOS EN ÓRBITA! (2-1):** Los Leones del Atlas impusieron su ley y veteranía táctica ante una valiente Canadá en Boston. Aunque el escorpión Alphonso Davies peleó con todo bajo la influencia de Plutón, fue **Achraf Hakimi** quien supo dominar las corrientes lunares de hoy para guiar a los africanos directo a Cuartos de Final. 
+> 
+> 🇫🇷 **¡MBAPPÉ HACE HISTORIA EN UNA BATALLA DE TITANES! (1-0):** Francia tuvo que sudar sangre frente a un Paraguay ultraguerreado y sumamente físico en Philadelphia. El capitán albirrojo Gustavo Gómez defendió como un verdadero Sagitario de fuego, pero **Kylian Mbappé** sacó el poder expansivo de Júpiter para destrabar el partido y anotar su **SÉPTIMO GOOOL** del torneo. ¡Sigue intratable como máximo artillero mundial!
+> 
+> 📈 **PIZARRA EN VIVO - MLB:**
+> ⚾ Yankees 4 - 2 Red Sox (7mo Inn)
+> ⚾ Dodgers 5 - 5 Padres (8vo Inn)
+> ⚾ Astros 6 - 1 Athletics (Final)
+> ⚾ Braves 4 - 3 Mets (Final)
+> 
+> 🌐 **¿Quieres leer todo el análisis astral completo de cada partido y ver los detalles de las Grandes Ligas?** Entra ya mismo al link de nuestra biografía y entérate de todo en nuestro portal web.
+> 
+> #DeportesEnOrbita #Mundial2026 #Mbappe #Marruecos #Francia #GrandesLigas #MLB #HoroscopoDeportivo #OctavosDeFinal #FutbolMundial
+
+---
+
+¡Ya tienes todo en tus manos! El `index.html` listo para actualizar en un clic y el texto de Instagram ideal para mantener a toda tu audiencia enganchada. ¡A romperla hoy con el contenido!
