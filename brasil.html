@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyer Brasil vs Noruega</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #050608; }
+        .font-impact { font-family: 'Anton', sans-serif; }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- Panel de control interactivo -->
+    <div id="panel" class="w-[360px] bg-slate-900 border border-slate-800 p-3 rounded-t-2xl flex justify-between items-center">
+        <span class="text-xs text-gray-400">📸 Toca los círculos para subir fotos</span>
+        <button onclick="toggleCam()" class="bg-red-600 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase">Modo Captura</button>
+    </div>
+    <button id="btn-salir" onclick="toggleCam()" class="hidden fixed top-4 right-4 z-50 bg-slate-900 border px-4 py-2 rounded-full text-xs font-bold">⬅ Volver</button>
+
+    <!-- ÁREA DEL FLYER (1:1 POST) -->
+    <div id="flyer" class="relative w-[360px] h-[360px] bg-slate-950 rounded-b-2xl md:rounded-2xl overflow-hidden border-4 border-slate-800 flex flex-col justify-between p-6 shadow-2xl select-none">
+        <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800');"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-transparent to-slate-950"></div>
+
+        <div class="relative z-10 text-center">
+            <h2 class="font-impact text-xl tracking-widest text-white">DEPORTES<span class="text-yellow-500">ENÓRBITA</span>VZLA</h2>
+            <div class="inline-block bg-yellow-500 text-black text-[9px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider mt-1">MUNDIAL 2026 • OCTAVOS DE FINAL</div>
+        </div>
+
+        <div class="relative z-10 flex justify-between items-center my-auto">
+            <div class="flex flex-col items-center w-5/12 text-center">
+                <input type="file" id="up-l" accept="image/*" class="hidden" onchange="prev(event, 'img-l')">
+                <label for="up-l" class="cursor-pointer">
+                    <div id="img-l" class="w-20 h-20 rounded-full border-2 border-yellow-500 bg-cover bg-center bg-slate-800 flex items-center justify-center overflow-hidden"><span class="text-[9px] text-gray-500">Foto</span></div>
+                </label>
+                <h3 class="font-impact text-sm mt-2 tracking-wide uppercase text-white">Vinícius Jr</h3>
+                <span class="text-[9px] text-yellow-400 font-bold tracking-widest">🇧🇷 BRASIL</span>
+                <span class="text-[8px] text-gray-400 italic">🔮 Brillo Solar</span>
+            </div>
+
+            <div class="font-impact text-2xl text-yellow-500 italic w-2/12 text-center">VS</div>
+
+            <div class="flex flex-col items-center w-5/12 text-center">
+                <input type="file" id="up-r" accept="image/*" class="hidden" onchange="prev(event, 'img-r')">
+                <label for="up-r" class="cursor-pointer">
+                    <div id="img-r" class="w-20 h-20 rounded-full border-2 border-blue-400 bg-cover bg-center bg-slate-800 flex items-center justify-center overflow-hidden"><span class="text-[9px] text-gray-500">Foto</span></div>
+                </label>
+                <h3 class="font-impact text-sm mt-2 tracking-wide uppercase text-white">E. Haaland</h3>
+                <span class="text-[9px] text-blue-400 font-bold tracking-widest">🇳🇴 NORUEGA</span>
+                <span class="text-[8px] text-gray-400 italic">🔮 Ambición Gélida</span>
+            </div>
+        </div>
+
+        <div class="relative z-10 text-center border-t border-slate-900 pt-2">
+            <p class="font-impact text-xs text-white tracking-widest">HOY DOMINGO • EN VIVO</p>
+            <p class="text-[9px] text-yellow-400 font-bold tracking-wider">deportesenorbitasvzla.github.io</p>
+        </div>
+    </div>
+
+    <script>
+        function prev(e, id) {
+            const f = e.target.files[0];
+            if (f) { const r = new FileReader(); r.onload = function(x) { document.getElementById(id).style.backgroundImage = `url('${x.target.result}')`; }; r.readAsDataURL(f); }
+        }
+        function toggleCam() {
+            const p = document.getElementById('panel'); const s = document.getElementById('btn-salir');
+            p.style.display = p.style.display === 'none' ? 'flex' : 'none';
+            s.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
