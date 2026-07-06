@@ -10,7 +10,7 @@
         body { font-family: 'Space Grotesk', sans-serif; background-color: #06080c; }
         .font-impact { font-family: 'Anton', sans-serif; }
         .ticker-wrap { overflow: hidden; background: #dc2626; }
-        .ticker { display: inline-block; white-space: nowrap; animation: marquee 25s linear infinite; }
+        .ticker { display: inline-block; white-space: nowrap; animation: marquee 28s linear infinite; }
         @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
     </style>
 </head>
@@ -21,10 +21,10 @@
         🇻🇪 ¡Felicidades Venezuela! 5 de Julio: Día de la Declaración de la Independencia y de la Libertad 🇻🇪
     </div>
 
-    <!-- CINTA EN VIVO (TICKER) -->
+    <!-- CINTA EN VIVO (TICKER ACTUALIZADO CON DATA REAL) -->
     <div class="ticker-wrap py-2 border-b border-red-700 shadow-lg">
         <div class="ticker text-xs font-bold uppercase tracking-widest text-white">
-            • 🔴 EN VIVO: MUNDIAL 2026 - RESULTADOS AL MOMENTO • 🇳🇴 NORUEGA DIO EL BATACAZO Y ELIMINÓ A BRASIL 🇧🇷 • 🏴󠁧󠁢󠁥󠁮󠁧󠁿 INGLATERRA VS MÉXICO 🇲🇽 (HOY 8:00 PM) • ⚾ MLB: JORNADA DE HOY ACTIVA • 🇻🇪 COPA VENEZUELA: REVISANDO RESULTADOS •
+            • 🔴 EN VIVO: MUNDIAL 2026 - NORUEGA ELIMINÓ A BRASIL (2-1) EN EL ADIÓS DE NEYMAR • 🏴󠁧󠁢󠁥󠁮󠁧󠁿 INGLATERRA SE QUEDÓ CON EL CLÁSICO TRAS VENCER A MÉXICO 🇲🇽 • 🏎️ F1: LEWIS HAMILTON SE CORONA EN EL GP DE SILVERSTONE EN UNA REEDICIÓN ÉPICA DE SU LEYENDA • 🇻🇪 COPA VENEZUELA: DEPORTIVO TÁCHIRA Y CARACAS FC SUMAN EN UNA JORNADA DE INFARTO • ⚾ MLB: ACCIÓN COMPLETA EN LAS MAYORES •
         </div>
     </div>
 
@@ -37,7 +37,7 @@
     <main class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12">
         <section class="lg:col-span-2 space-y-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- NOTA 1: BRASIL VS NORUEGA (Imagen cargada con URL directa) -->
+                <!-- NOTA 1: BRASIL VS NORUEGA -->
                 <article class="bg-slate-900 rounded-2xl border border-yellow-500/20 overflow-hidden shadow-xl group">
                     <div class="h-64 bg-cover bg-center relative flex items-end p-4" style="background-image: url('https://googleusercontent.com/image_generation_content/320');">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40"></div>
@@ -49,30 +49,77 @@
                         <p class="text-xs text-yellow-500 font-bold italic">Hoy fue el emotivo "último baile" de Neymar JR.</p>
                     </div>
                 </article>
-                <!-- NOTA 2 -->
+                
+                <!-- NOTA 2: RESULTADO INGLATERRA VS MÉXICO -->
                 <article class="bg-slate-900 rounded-2xl border border-green-500/20 overflow-hidden shadow-xl group">
-                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55');"></div>
+                    <div class="h-64 bg-cover bg-center relative flex items-end p-4" style="background-image: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40"></div>
+                        <span class="relative z-10 text-[10px] bg-green-600 text-white font-bold px-2 py-0.5 rounded uppercase">Finalizado</span>
+                    </div>
                     <div class="p-5">
-                        <h2 class="font-impact text-2xl text-white uppercase mb-3">Inglaterra vs México: Duelo de Gigantes</h2>
-                        <p class="text-xs text-gray-400">Harry Kane y el capitán Edson Álvarez definen quién avanza a la siguiente ronda del mundial.</p>
+                        <h2 class="font-impact text-2xl text-white uppercase mb-3">Inglaterra ruge con fuerza y saca a México del Mundial</h2>
+                        <p class="text-xs text-gray-400 mb-3">El planteamiento táctico de Harry Kane pudo más que el ímpetu y el coraje de Edson Álvarez en cancha. Los ingleses avanzan de ronda.</p>
+                        <p class="text-xs text-green-400 font-bold">Marcador Final: Inglaterra 2 - 1 México. Los Tres Leones van contra Noruega.</p>
                     </div>
                 </article>
             </div>
+
+            <!-- SECCIÓN: EN ORBITA MOTOR Y NACIONAL -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-slate-800 pt-8">
+                <!-- PANEL F1 ACTUALIZADO -->
+                <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
+                    <h3 class="font-impact text-xl text-blue-400 tracking-wider mb-3 uppercase flex items-center gap-2">🏎️ Fórmula 1 (GP de Gran Bretaña)</h3>
+                    <p class="text-xs text-gray-400 mb-4">Silverstone vibró con una carrera legendaria bajo condiciones cambiantes.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between items-center">
+                            <span class="text-gray-300">🥇 1º Lewis Hamilton (Mercedes)</span>
+                            <span class="text-green-400 font-bold">Ganador</span>
+                        </div>
+                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between items-center">
+                            <span class="text-gray-300">🥈 2º Max Verstappen (Red Bull)</span>
+                            <span class="text-gray-400">+1.4s</span>
+                        </div>
+                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between items-center">
+                            <span class="text-gray-300">🥉 3º Lando Norris (McLaren)</span>
+                            <span class="text-gray-400">+3.1s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL COPA VENEZUELA ACTUALIZADO -->
+                <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
+                    <h3 class="font-impact text-xl text-red-400 tracking-wider mb-3 uppercase flex items-center gap-2">🇻🇪 Copa Venezuela (Fase de Grupos)</h3>
+                    <p class="text-xs text-gray-400 mb-4">Resultados oficiales de la vibrante jornada del balompié nacional.</p>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between">
+                            <span class="text-gray-300">Monagas SC 1 - 1 Caracas FC</span>
+                            <span class="text-yellow-500 font-bold">Final</span>
+                        </div>
+                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between">
+                            <span class="text-gray-300">Deportivo Táchira 2 - 0 Estudiantes</span>
+                            <span class="text-green-500 font-bold">Final</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         
+        <!-- COLUMNA DERECHA -->
         <aside class="space-y-8">
             <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 shadow-xl">
-                <h3 class="font-impact text-xl text-white text-center pb-2 border-b border-slate-800 mb-4">📊 Octavos de Final</h3>
+                <h3 class="font-impact text-xl text-white text-center pb-2 border-b border-slate-800 mb-4">📊 Octavos de Final Actualizados</h3>
                 <div class="space-y-3 text-xs">
-                    <div class="flex justify-between bg-red-900/20 p-2 rounded"><span>Brasil 1 - 2 Noruega</span><span class="text-blue-400">NORUEGA AVANZA</span></div>
-                    <div class="flex justify-between bg-slate-950 p-2 rounded"><span>Inglaterra vs México</span><span class="text-green-400">HOY 8:00 PM</span></div>
+                    <div class="flex justify-between bg-red-900/20 p-2 rounded"><span>Brasil 1 - 2 Noruega</span><span class="text-blue-400 font-bold">NORUEGA CLASIFICÓ</span></div>
+                    <div class="flex justify-between bg-green-900/20 p-2 rounded"><span>Inglaterra 2 - 1 México</span><span class="text-green-400 font-bold">INGLATERRA CLASIFICÓ</span></div>
+                    <div class="flex justify-between bg-slate-950 p-2 rounded text-gray-400"><span>Portugal vs España</span><span>Lunes 3:00 PM</span></div>
+                    <div class="flex justify-between bg-slate-950 p-2 rounded text-gray-400"><span>EE.UU. vs Bélgica</span><span>Lunes 8:00 PM</span></div>
                 </div>
             </div>
         </aside>
     </main>
 
     <footer class="bg-slate-950 border-t border-slate-900 text-center py-6 text-xs text-gray-500">
-        <p>&copy; 2026 Deportes en Órbita Vzla.</p>
+        <p>&copy; 2026 Deportes en Órbita Vzla. Todos los derechos reservados.</p>
     </footer>
 
 </body>
