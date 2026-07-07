@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deportes en Órbita Vzla | Copa del Mundo 2026</title>
+    <title>Deportes en Órbita Vzla | Edición Mundialista</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;750&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Space Grotesk', sans-serif; background-color: #06080c; }
         .font-impact { font-family: 'Anton', sans-serif; }
         .ticker-wrap { overflow: hidden; background: #dc2626; }
-        .ticker { display: inline-block; white-space: nowrap; animation: marquee 28s linear infinite; }
+        .ticker { display: inline-block; white-space: nowrap; animation: marquee 30s linear infinite; }
         @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
     </style>
 </head>
 <body class="text-gray-100 min-h-screen">
 
-    <!-- CINTILLO FERIADO NACIONAL -->
-    <div class="bg-gradient-to-r from-yellow-500 via-blue-600 to-red-600 text-center py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-md">
-        Aniversario del 5 de Julio: Declaración de la Independencia 🇻🇪
-    </div>
-
-    <!-- CINTA EN VIVO (TICKER) -->
+    <!-- CINTA EN VIVO DE RESULTADOS (MUNDIAL Y MLB) -->
     <div class="ticker-wrap py-2 border-b border-red-700 shadow-lg">
         <div class="ticker text-xs font-bold uppercase tracking-widest text-white">
-            • 🔴 EN VIVO: MUNDIAL 2026 - NORUEGA ELIMINÓ A BRASIL (2-1) EN EL ADIÓS DE NEYMAR • 🏴󠁧󠁢󠁥󠁮󠁧󠁿 INGLATERRA SE QUEDÓ CON EL CLÁSICO TRAS VENCER A MÉXICO 🇲🇽 • 🏎️ F1: LEWIS HAMILTON SE CORONA EN EL GP DE SILVERSTONE • 🇻🇪 COPA VENEZUELA: DEPORTIVO TÁCHIRA Y CARACAS FC SUMAN EN LA JORNADA •
+            • 🔴 EN VIVO - OCTAVOS DE FINAL: ESPAÑA ELIMINÓ A PORTUGAL (1-0) EN EL ADIÓS DE CRISTIANO RONALDO • 🇺🇸 ESTADOS UNIDOS AVANZA A CUARTOS TRAS VENCER A BÉLGICA (2-1) EN PRÓRROGA • ⚾ MLB AL MOMENTO: YANKEES 4 - 2 RED SOX (FINAL) • ASTROS 5 - 3 RANGERS (7MO INNING) • DODGERS 6 - 1 GIANTS (FINAL) • ⚽ MUNDIAL 2026: CUARTOS DE FINAL DEFINIDOS EN EL LADO A •
         </div>
     </div>
 
@@ -34,82 +29,131 @@
         <p class="text-sm text-gray-400 mt-2 tracking-widest uppercase">Tu conexión con el deporte y los astros</p>
     </header>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12">
+        
+        <!-- COLUMNA IZQUIERDA Y CENTRAL: NOTAS, DEBATE Y MOTOR -->
         <section class="lg:col-span-2 space-y-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- NOTA 1 -->
-                <article class="bg-slate-900 rounded-2xl border border-yellow-500/20 overflow-hidden shadow-xl group">
-                    <div class="h-64 bg-cover bg-center relative flex items-end p-4" style="background-image: url('https://googleusercontent.com/image_generation_content/320');">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40"></div>
-                        <span class="relative z-10 text-[10px] bg-red-600 text-white font-bold px-2 py-0.5 rounded uppercase">¡Histórico!</span>
-                    </div>
-                    <div class="p-5">
-                        <h2 class="font-impact text-2xl text-white uppercase mb-3">¡Paternidad Nórdica! Noruega tumba a Brasil y despide a una leyenda</h2>
-                        <p class="text-xs text-gray-400 mb-3">Noruega extendió su invicto histórico frente al Scratch: 5 encuentros, 3 victorias, 2 empates.</p>
-                        <p class="text-xs text-yellow-500 font-bold italic">El emotivo "último baile" de Neymar JR.</p>
-                    </div>
-                </article>
+            
+            <!-- NOTA DE PRENSA PRINCIPAL: CR7 -->
+            <article class="bg-slate-900 rounded-2xl border border-yellow-500/20 overflow-hidden shadow-xl group">
+                <div class="h-[400px] bg-cover bg-center relative flex items-end p-6" style="background-image: url('https://googleusercontent.com/image_generation_content/321');">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-black/30"></div>
+                    <span class="relative z-10 text-xs bg-red-600 text-white font-bold px-3 py-1 rounded uppercase tracking-wider">Última Hora</span>
+                </div>
+                <div class="p-6 bg-slate-900">
+                    <h2 class="font-impact text-3xl md:text-4xl text-white uppercase mb-4 group-hover:text-yellow-400 transition">El Ocaso de un Rey: España despide a Portugal y sella el adiós de Cristiano Ronaldo</h2>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-4">El destino y las constelaciones no perdonan. En un choque ibérico de alta tensión, la selección de España impuso su juego de posesión y venció por la mínima diferencia (1-0) a un combativo Portugal, rompiendo el corazón de millones de fanáticos en lo que significó el último partido oficial de Cristiano Ronaldo en la historia de los Mundiales.</p>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">El legendario '7', visiblemente conmovido bajo el cielo del estadio, se despidió entre los aplausos de ambas aficiones. Con este resultado, el combinado luso cierra una de sus eras más gloriosas, mientras España avanza con paso firme en la órbita del campeonato hacia la ronda de los mejores ocho.</p>
+                </div>
+            </article>
+
+            <!-- NUEVA SECCIÓN DE DEBATE INTERACTIVO -->
+            <div class="bg-slate-900/40 p-6 rounded-2xl border border-blue-500/20 shadow-xl">
+                <h3 class="font-impact text-2xl text-blue-400 tracking-wider mb-2 uppercase">🗣️ El Planeta del Debate: ¿Fin de una era o falta de recambio?</h3>
+                <p class="text-xs text-gray-400 mb-6 italic">Nuestros analistas confrontan visiones astrales tras el impacto de las eliminaciones ibérica y sudamericana.</p>
                 
-                <!-- NOTA 2 -->
-                <article class="bg-slate-900 rounded-2xl border border-green-500/20 overflow-hidden shadow-xl group">
-                    <div class="h-64 bg-cover bg-center relative flex items-end p-4" style="background-image: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55');">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40"></div>
-                        <span class="relative z-10 text-[10px] bg-green-600 text-white font-bold px-2 py-0.5 rounded uppercase">Finalizado</span>
-                    </div>
-                    <div class="p-5">
-                        <h2 class="font-impact text-2xl text-white uppercase mb-3">Inglaterra ruge con fuerza y saca a México del Mundial</h2>
-                        <p class="text-xs text-gray-400 mb-3">El planteamiento táctico de Harry Kane pudo más que el ímpetu de Edson Álvarez en cancha.</p>
-                        <p class="text-xs text-green-400 font-bold">Marcador Final: Inglaterra 2 - 1 México.</p>
-                    </div>
-                </article>
-            </div>
-
-            <!-- MOTOR Y NACIONAL -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-slate-800 pt-8">
-                <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
-                    <h3 class="font-impact text-xl text-blue-400 tracking-wider mb-3 uppercase">🏎️ Fórmula 1 (GP de Gran Bretaña)</h3>
-                    <div class="space-y-2 text-xs">
-                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between">
-                            <span class="text-gray-300">🥇 1º Lewis Hamilton (Mercedes)</span>
-                            <span class="text-green-400 font-bold">Ganador</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Postura A -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-red-500/20">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                            <h4 class="font-bold text-sm text-white uppercase">La Visión de Aries (Lado Crítico)</h4>
                         </div>
-                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between">
-                            <span class="text-gray-300">🥈 2º Max Verstappen (Red Bull)</span>
-                            <span class="text-gray-400">+1.4s</span>
+                        <p class="text-xs text-gray-400 leading-relaxed">"El exceso de personalismo congeló las órbitas de Portugal y Brasil. Depender del peso místico de figuras veteranas en momentos de máxima presión impidió que el nuevo talento fluyera con libertad."</p>
+                    </div>
+                    <!-- Postura B -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-green-500/20">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                            <h4 class="font-bold text-sm text-white uppercase">La Visión de Libra (Lado Histórico)</h4>
                         </div>
+                        <p class="text-xs text-gray-400 leading-relaxed">"Es un proceso natural de mutación cósmica. La historia exigía este cierre para dar paso a la renovación. El legado de Cristiano y Neymar queda intacto en los astros del fútbol."</p>
                     </div>
                 </div>
-
-                <div class="bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
-                    <h3 class="font-impact text-xl text-red-400 tracking-wider mb-3 uppercase">🇻🇪 Copa Venezuela</h3>
-                    <div class="space-y-2 text-xs">
-                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between">
-                            <span class="text-gray-300">Monagas SC 1 - 1 Caracas FC</span>
-                            <span class="text-yellow-500 font-bold">Final</span>
-                        </div>
-                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 flex justify-between">
-                            <span class="text-gray-300">Deportivo Táchira 2 - 0 Estudiantes</span>
-                            <span class="text-green-500 font-bold">Final</span>
-                        </div>
-                    </div>
-                </div>
+                <p class="text-center text-[10px] text-yellow-500 mt-4 font-bold tracking-widest uppercase">¿Y tú qué opinas? Deja tu comentario en nuestro Instagram @DeportesEnOrbitaVzla</p>
             </div>
+
         </section>
         
-        <!-- COLUMNA DERECHA -->
+        <!-- COLUMNA DERECHA: HORÓSCOPO ASTRAL Y CUADRO MUNDIALISTA -->
         <aside class="space-y-8">
-            <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 shadow-xl">
-                <h3 class="font-impact text-xl text-white text-center pb-2 border-b border-slate-800 mb-4">📊 Octavos de Final</h3>
-                <div class="space-y-3 text-xs">
-                    <div class="flex justify-between bg-red-900/20 p-2 rounded"><span>Brasil 1 - 2 Noruega</span><span class="text-blue-400 font-bold">NORUEGA</span></div>
-                    <div class="flex justify-between bg-green-900/20 p-2 rounded"><span>Inglaterra 2 - 1 México</span><span class="text-green-400 font-bold">INGLATERRA</span></div>
+            
+            <!-- HORÓSCOPO DEPORTIVO DIARIO -->
+            <div class="bg-gradient-to-br from-purple-950/40 to-slate-950 p-6 rounded-2xl border border-purple-500/30 shadow-xl">
+                <h3 class="font-impact text-2xl text-purple-400 tracking-wider mb-4 uppercase">🔮 Horóscopo de Órbita</h3>
+                
+                <div class="space-y-4">
+                    <!-- Portugal vs España -->
+                    <div class="bg-slate-900/90 p-3.5 rounded-xl border border-purple-500/10">
+                        <span class="font-impact text-xs text-yellow-500 tracking-wider block mb-1 uppercase">🇵🇹 PORTUGAL VS ESPAÑA 🇪🇸</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">La Luna en tránsito favoreció la precisión geométrica de la Furia Roja. La constelación lusa se vio sobrecargada por la nostalgia de sus referentes, provocando una desconexión en las líneas medias que apagó la pólvora de su ataque.</p>
+                    </div>
+
+                    <!-- EEUU vs Bélgica -->
+                    <div class="bg-slate-900/90 p-3.5 rounded-xl border border-purple-500/10">
+                        <span class="font-impact text-xs text-blue-400 tracking-wider block mb-1 uppercase">🇺🇸 EEUU VS BÉLGICA 🇧🇪</span>
+                        <p class="text-[11px] text-gray-300 leading-relaxed">Marte inyectó una dosis masiva de resistencia física al conjunto norteamericano durante la prórroga. El eclipse de la generación dorada belga se completó ante la velocidad y el vigor de un cuadro joven alineado con el futuro.</p>
+                    </div>
                 </div>
             </div>
+
+            <!-- TABLA ACTUALIZADA: CUARTOS Y SEMIFINALES -->
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 shadow-xl">
+                <h3 class="font-impact text-xl text-white text-center pb-2 border-b border-slate-800 mb-4 uppercase tracking-wider">🏆 Fase Final Mundial 2026</h3>
+                
+                <div class="space-y-4 text-[11px]">
+                    <!-- CUARTOS LADO A -->
+                    <div>
+                        <span class="text-[9px] font-bold text-yellow-500 uppercase tracking-widest block mb-1.5">🔥 Cuartos de Final (Lado A)</span>
+                        <div class="space-y-1.5">
+                            <div class="bg-slate-950 p-2 rounded border border-slate-800 flex justify-between">
+                                <span class="text-gray-300">Francia vs Marruecos</span>
+                                <span class="text-gray-500 font-bold">Jue 9 Jul</span>
+                            </div>
+                            <div class="bg-slate-950 p-2 rounded border border-slate-800 flex justify-between">
+                                <span class="text-gray-300">Noruega vs Inglaterra</span>
+                                <span class="text-gray-500 font-bold">Vie 10 Jul</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CUARTOS LADO B -->
+                    <div>
+                        <span class="text-[9px] font-bold text-blue-400 uppercase tracking-widest block mb-1.5">🔥 Cuartos de Final (Lado B)</span>
+                        <div class="space-y-1.5">
+                            <div class="bg-slate-950 p-2 rounded border border-slate-800 flex justify-between bg-blue-500/5">
+                                <span class="text-white font-medium">España vs Estados Unidos</span>
+                                <span class="text-green-400 font-bold">CONFIRMADO</span>
+                            </div>
+                            <div class="bg-slate-950 p-2 rounded border border-slate-800 flex justify-between">
+                                <span class="text-gray-400">Gan. Portugal/Esp vs Gan. EE.UU./Bél</span>
+                                <span class="text-gray-600 font-bold">Actualizado</span>
+                            </div>
+                            <div class="bg-slate-950 p-2 rounded border border-slate-800 flex justify-between text-gray-500">
+                                <span>Por Definir Llave 4</span>
+                                <span>Mar / Próx</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROYECCIÓN SEMIFINAL -->
+                    <div class="pt-2 border-t border-slate-800">
+                        <span class="text-[9px] font-bold text-red-400 uppercase tracking-widest block mb-1">🌠 Ruta a la Semifinal</span>
+                        <div class="bg-slate-950 p-2 rounded border border-red-900/30 text-gray-400">
+                            Ganador Lado A vs Ganador Lado B
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </aside>
+
     </main>
 
+    <!-- PIE DE PÁGINA -->
     <footer class="bg-slate-950 border-t border-slate-900 text-center py-6 text-xs text-gray-500">
-        <p>&copy; 2026 Deportes en Órbita Vzla.</p>
+        <p>&copy; 2026 Deportes en Órbita Vzla. Todos los derechos reservados.</p>
     </footer>
 
 </body>
